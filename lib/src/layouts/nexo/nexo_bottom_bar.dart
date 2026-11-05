@@ -6,25 +6,26 @@ import '../../icons/xora_icons.dart';
 import '../../theme/xora_spacing.dart';
 
 class NexoBottomBar extends StatelessWidget {
-  const NexoBottomBar({
-    super.key,
-    this.appVersion,
-    this.actions,
-  });
+  const NexoBottomBar({super.key, this.appVersion, this.actions});
 
   final String? appVersion;
   final List<Widget>? actions;
 
-  List<Widget> get _actions => actions ??
+  List<Widget> get _actions =>
+      actions ??
       [
         IconButton(
-          onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-          icon: const XoraIcon(XoraIcons.github),
+          onPressed: () =>
+              launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+          icon: const XoraIcon(XoraIcons.github, size: 15),
+          iconSize: 15,
           tooltip: 'GitHub',
         ),
         IconButton(
-          onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-          icon: const XoraIcon(XoraIcons.mugHot),
+          onPressed: () =>
+              launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
+          icon: const XoraIcon(XoraIcons.mugHot, size: 15),
+          iconSize: 15,
           tooltip: 'Ko-fi',
         ),
       ];
@@ -33,7 +34,7 @@ class NexoBottomBar extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return Container(
-      height: 25,
+      height: 30,
       padding: const EdgeInsets.symmetric(horizontal: XoraSpacing.lg),
       decoration: BoxDecoration(
         color: scheme.surface,
