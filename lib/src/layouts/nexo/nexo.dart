@@ -81,8 +81,8 @@ class _XoraNexoState extends State<XoraNexo> {
                   sections: widget.sidebarSections.isNotEmpty
                       ? widget.sidebarSections
                       : (widget.sidebarItems.isNotEmpty
-                          ? [NexoSidebarSection(items: widget.sidebarItems)]
-                          : const []),
+                            ? [NexoSidebarSection(items: widget.sidebarItems)]
+                            : const []),
                   items: const [],
                   state: _sidebarState,
                   onStateChanged: (s) => setState(() => _sidebarState = s),
@@ -131,4 +131,3 @@ class _XoraNexoState extends State<XoraNexo> {
     );
   }
 }
-
