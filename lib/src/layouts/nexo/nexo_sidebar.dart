@@ -91,8 +91,8 @@ class NexoSidebar extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: XoraSpacing.sm),
               children: [
-                for (final section in _sections) ...[
-                  if (_expanded && section.title != null)
+                for (int i = 0; i < _sections.length; i++) ...[
+                  if (_expanded && _sections[i].title != null)
                     Padding(
                       padding: const EdgeInsets.fromLTRB(
                         XoraSpacing.lg,
@@ -101,15 +101,20 @@ class NexoSidebar extends StatelessWidget {
                         XoraSpacing.xs,
                       ),
                       child: Text(
-                        section.title!,
+                        _sections[i].title!,
                         style: XoraTypography.caption.copyWith(
                           color: XoraColors.textSecondary,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                  for (final item in section.items)
+                  for (final item in _sections[i].items)
                     _SidebarTile(item: item, collapsed: !_expanded),
+                  if (!_expanded && i < _sections.length - 1)
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: XoraSpacing.sm),
+                      child: Divider(height: 1, indent: 8, endIndent: 8),
+                    ),
                 ],
               ],
             ),
