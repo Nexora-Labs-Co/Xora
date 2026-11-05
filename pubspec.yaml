@@ -1,15 +1,16 @@
 name: xora
-description: "Xora design system and UI kit for Nexora apps."
-version: 0.1.0
+description: 'Xora design system and UI kit for Nexora apps.'
+version: 26.11.4
 homepage: https://github.com/Nexora-Labs-Co/Xora
 
 environment:
   sdk: ^3.13.7
-  flutter: ">=3.24.0"
+  flutter: '>=3.24.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  font_awesome_flutter: ^11.0.0
 
 dev_dependencies:
   flutter_test:
@@ -17,10 +18,3 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
-  assets:
-    - assets/fonts/
-  fonts:
-    - family: PhosphorRegular
-      fonts:
-        - asset: assets/fonts/Phosphor.ttf
-
