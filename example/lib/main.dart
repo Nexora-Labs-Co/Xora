@@ -65,10 +65,22 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             selectedIndex: _index,
             onTap: (i) => setState(() => _index = i),
             items: const [
-              OneBottomBarItem(icon: XoraIcon(XoraIcons.palette), label: 'Home'),
-              OneBottomBarItem(icon: XoraIcon(XoraIcons.squaresFour), label: 'Components'),
-              OneBottomBarItem(icon: XoraIcon(XoraIcons.notePencil), label: 'Forms'),
-              OneBottomBarItem(icon: XoraIcon(XoraIcons.bell), label: 'Feedback'),
+              OneBottomBarItem(
+                icon: XoraIcon(XoraIcons.palette),
+                label: 'Home',
+              ),
+              OneBottomBarItem(
+                icon: XoraIcon(XoraIcons.squaresFour),
+                label: 'Components',
+              ),
+              OneBottomBarItem(
+                icon: XoraIcon(XoraIcons.notePencil),
+                label: 'Forms',
+              ),
+              OneBottomBarItem(
+                icon: XoraIcon(XoraIcons.bell),
+                label: 'Feedback',
+              ),
             ],
           ),
           child: pages[_index],
@@ -105,15 +117,17 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
           appVersion: 'v0.1.0',
           bottomActions: [
             IconButton(
-              iconSize: 20,
-              onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-              icon: const XoraIcon(XoraIcons.github),
+              iconSize: 15,
+              onPressed: () =>
+                  launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+              icon: XoraIcon(XoraIcons.github),
               tooltip: 'GitHub',
             ),
             IconButton(
-              iconSize: 20,
-              onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-              icon: const XoraIcon(XoraIcons.mugHot),
+              iconSize: 15,
+              onPressed: () =>
+                  launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
+              icon: XoraIcon(XoraIcons.mugHot),
               tooltip: 'Ko-fi',
             ),
           ],
@@ -264,7 +278,7 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         XoraButton(
           label: "With icon",
-          icon: XoraIcon(XoraIcons.plus, size: 16, color: Colors.white),
+          icon: XoraIcon(XoraIcons.plus),
         ),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
