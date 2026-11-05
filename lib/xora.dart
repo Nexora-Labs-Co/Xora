@@ -17,6 +17,7 @@ export 'src/components/feedback/xora_loading.dart';
 export 'src/components/feedback/xora_snackbar.dart';
 export 'src/components/data_display/xora_badge.dart';
 export 'src/components/data_display/xora_avatar.dart';
+export 'src/components/data_display/xora_artwork.dart';
 export 'src/components/data_display/xora_list_tile.dart';
 
 export 'src/layouts/xora_breakpoints.dart';
