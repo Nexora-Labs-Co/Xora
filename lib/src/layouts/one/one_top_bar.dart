@@ -14,6 +14,8 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.accountName = 'Usuario',
     this.accountStatus = 'Free',
     this.accountInitials = 'U',
+    this.onToggleTheme,
+    this.isDark = false,
     this.leading,
     this.title,
     this.actions = const [],
@@ -26,6 +28,8 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
   final String accountName;
   final String accountStatus;
   final String accountInitials;
+  final VoidCallback? onToggleTheme;
+  final bool isDark;
   final Widget? leading;
   final Widget? title;
   final List<Widget> actions;
@@ -73,6 +77,8 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                                 userName: accountName,
                                 userStatus: accountStatus,
                                 userInitials: accountInitials,
+                                onToggleTheme: onToggleTheme,
+                                isDark: isDark,
                               ),
                             ),
                           ),

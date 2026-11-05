@@ -14,11 +14,15 @@ class OneAccountScreen extends StatelessWidget {
     this.userName = 'Usuario',
     this.userStatus = 'Free',
     this.userInitials = 'U',
+    this.onToggleTheme,
+    this.isDark = false,
   });
 
   final String userName;
   final String userStatus;
   final String userInitials;
+  final VoidCallback? onToggleTheme;
+  final bool isDark;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +66,11 @@ class OneAccountScreen extends StatelessWidget {
             XoraCard(
               child: Column(
                 children: [
+                  SwitchListTile(
+                    title: const Text('Tema oscuro'),
+                    value: isDark,
+                    onChanged: onToggleTheme == null ? null : (_) => onToggleTheme!(),
+                  ),
                   ListTile(
                     leading: const Icon(Icons.settings),
                     title: const Text('Configuración'),
