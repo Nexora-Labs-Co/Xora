@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://nexora.dev">
-    <img src="assets/Template-Github.svg" alt="NexoraTemplate Preview" style="border-radius: 20px;" width="100%" />
+    <img src="assets/Xora-Github.svg" alt="NexoraTemplate Preview" style="border-radius: 20px;" width="100%" />
   </a>
 </p>
 
