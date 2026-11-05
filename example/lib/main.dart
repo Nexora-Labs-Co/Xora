@@ -72,7 +72,20 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
       body: XoraResponsive(
         mobile: XoraOne(child: pages[_index]),
         tablet: XoraSlate(child: pages[_index]),
-        desktop: XoraNexo(child: pages[_index]),
+        desktop: XoraNexo(
+          leftSidebar: NexoSidebar(
+            items: const [
+              NexoSidebarItem(label: 'Foundations', icon: FontAwesomeIcons.palette),
+              NexoSidebarItem(label: 'Components', icon: FontAwesomeIcons.tableCells),
+              NexoSidebarItem(label: 'Forms', icon: FontAwesomeIcons.penToSquare),
+              NexoSidebarItem(label: 'Feedback', icon: FontAwesomeIcons.bell),
+            ],
+          ),
+          rightPanel: XoraCard(
+            child: Text('Context panel for page ${_index + 1}'),
+          ),
+          child: pages[_index],
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
