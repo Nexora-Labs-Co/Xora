@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../components/data_display/xora_avatar.dart';
 import '../../components/surfaces/xora_card.dart';
@@ -72,65 +73,121 @@ class _OneAccountScreenState extends State<OneAccountScreen> {
           ),
         ],
       ),
-      body: Padding(
+      body: ListView(
         padding: const EdgeInsets.all(XoraSpacing.lg),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            XoraCard(
-              child: Row(
-                children: [
-                  _avatarPath == null
-                      ? XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56)
-                      : ClipOval(
-                          child: Image.file(
-                            File(_avatarPath!),
-                            width: 56,
-                            height: 56,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, _, _) =>
-                                XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56),
-                          ),
+        children: [
+          XoraCard(
+            child: Row(
+              children: [
+                _avatarPath == null
+                    ? XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56)
+                    : ClipOval(
+                        child: Image.file(
+                          File(_avatarPath!),
+                          width: 56,
+                          height: 56,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56),
                         ),
-                  const SizedBox(width: XoraSpacing.md),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(_name, style: Theme.of(context).textTheme.titleLarge),
-                        const SizedBox(height: XoraSpacing.xs),
-                        Text(widget.userStatus, style: Theme.of(context).textTheme.bodyMedium),
-                      ],
-                    ),
+                      ),
+                const SizedBox(width: XoraSpacing.md),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(_name, style: Theme.of(context).textTheme.titleLarge),
+                      const SizedBox(height: XoraSpacing.xs),
+                      Text(widget.userStatus, style: Theme.of(context).textTheme.bodyMedium),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            const SizedBox(height: XoraSpacing.lg),
-            XoraCard(
-              child: Column(
-                children: [
-                  SwitchListTile(
-                    title: const Text('Tema oscuro'),
-                    value: widget.isDark,
-                    onChanged: widget.onToggleTheme == null ? null : (_) => widget.onToggleTheme!(),
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.settings),
-                    title: const Text('Configuración'),
-                    onTap: () {},
-                  ),
-                  ListTile(
-                    leading: const Icon(Icons.logout),
-                    title: const Text('Cerrar sesión'),
-                    onTap: () {},
-                  ),
-                ],
-              ),
+          ),
+          const SizedBox(height: XoraSpacing.lg),
+          _sectionTitle(context, 'Cuenta'),
+          XoraCard(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.person),
+                  title: const Text('Editar perfil'),
+                  onTap: _edit,
+                ),
+                ListTile(
+                  leading: const Icon(Icons.notifications),
+                  title: const Text('Notificaciones'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.language),
+                  title: const Text('Lenguaje'),
+                  onTap: () {},
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          const SizedBox(height: XoraSpacing.lg),
+          _sectionTitle(context, 'Preferencias'),
+          XoraCard(
+            child: Column(
+              children: [
+                SwitchListTile(
+                  title: const Text('Tema oscuro'),
+                  value: widget.isDark,
+                  onChanged: widget.onToggleTheme == null ? null : (_) => widget.onToggleTheme!(),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: XoraSpacing.lg),
+          _sectionTitle(context, 'Soporte'),
+          XoraCard(
+            child: Column(
+              children: [
+                ListTile(
+                  leading: const Icon(Icons.help),
+                  title: const Text('Ayuda'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.privacy_tip),
+                  title: const Text('Política de privacidad'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: const Icon(Icons.feedback),
+                  title: const Text('Feedback'),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: XoraSpacing.lg),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+                icon: XoraIcon(XoraIcons.github),
+                tooltip: 'GitHub',
+              ),
+              IconButton(
+                onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
+                icon: XoraIcon(XoraIcons.mugHot),
+                tooltip: 'Ko-fi',
+              ),
+            ],
+          ),
+        ],
       ),
+    );
+  }
+
+  Widget _sectionTitle(BuildContext context, String title) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: XoraSpacing.sm),
+      child: Text(title, style: Theme.of(context).textTheme.titleMedium),
     );
   }
 }
