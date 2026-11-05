@@ -18,3 +18,11 @@ export 'src/components/feedback/xora_snackbar.dart';
 export 'src/components/data_display/xora_badge.dart';
 export 'src/components/data_display/xora_avatar.dart';
 export 'src/components/data_display/xora_list_tile.dart';
+
+export 'src/layouts/xora_breakpoints.dart';
+export 'src/layouts/xora_responsive.dart';
+export 'src/layouts/xora_one.dart';
+export 'src/layouts/xora_slate.dart';
+export 'src/layouts/xora_nexo.dart';
+
+export 'src/icons/xora_icons.dart';
