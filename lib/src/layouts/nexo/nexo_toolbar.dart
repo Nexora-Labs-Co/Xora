@@ -8,7 +8,7 @@ class NexoToolbar extends StatelessWidget implements PreferredSizeWidget {
     this.leading,
     this.title,
     this.actions = const [],
-    this.height = 56,
+    this.height = 58,
   });
 
   final Widget? leading;
@@ -39,10 +39,7 @@ class NexoToolbar extends StatelessWidget implements PreferredSizeWidget {
                   leading!,
                   const SizedBox(width: XoraSpacing.md),
                 ],
-                if (title != null)
-                  Expanded(child: title!)
-                else
-                  const Spacer(),
+                if (title != null) Expanded(child: title!) else const Spacer(),
                 ...actions,
               ],
             ),
@@ -52,4 +49,3 @@ class NexoToolbar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 }
-
