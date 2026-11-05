@@ -1,11 +1,11 @@
 name: xora
-description: 'Xora design system and UI kit for Nexora apps.'
+description: "Xora design system and UI kit for Nexora apps."
 version: 26.11.4
 homepage: https://github.com/Nexora-Labs-Co/Xora
 
 environment:
   sdk: ^3.13.7
-  flutter: '>=3.24.0'
+  flutter: ">=3.24.0"
 
 dependencies:
   flutter:
@@ -19,3 +19,11 @@ dev_dependencies:
   flutter_lints: ^6.0.0
 
 flutter:
+  assets:
+    - assets/fonts/
+  fonts:
+    - family: Gliker
+      fonts:
+        - asset: assets/fonts/Gliker-Bold.ttf
+          weight: 700
+

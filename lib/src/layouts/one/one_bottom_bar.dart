@@ -36,8 +36,8 @@ class OneBottomBar extends StatelessWidget {
         child: Center(
           child: Container(
             padding: const EdgeInsets.symmetric(
-              horizontal: XoraSpacing.sm,
-              vertical: XoraSpacing.xs,
+              horizontal: XoraSpacing.lg,
+              vertical: XoraSpacing.sm,
             ),
             decoration: BoxDecoration(
               color: scheme.surface,
@@ -89,11 +89,11 @@ class _OneBottomTile extends StatelessWidget {
       borderRadius: BorderRadius.circular(XoraRadius.full),
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: XoraSpacing.md,
-          vertical: XoraSpacing.sm,
+          horizontal: XoraSpacing.lg,
+          vertical: XoraSpacing.md,
         ),
         child: IconTheme(
-          data: IconThemeData(color: color, size: 20),
+          data: IconThemeData(color: color, size: 24),
           child: item.icon,
         ),
       ),
