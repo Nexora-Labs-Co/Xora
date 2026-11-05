@@ -30,3 +30,4 @@ export 'src/layouts/nexo/nexo_sidebar.dart';
 export 'src/layouts/nexo/nexo_bottom_bar.dart';
 
 export 'src/icons/xora_icons.dart';
+export 'src/icons/xora_icon.dart';

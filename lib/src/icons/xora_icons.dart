@@ -15,5 +15,11 @@ class XoraIcons {
   static const FaIconData tray = FontAwesomeIcons.inbox;
   static const FaIconData magnifyingGlassMinus = FontAwesomeIcons.magnifyingGlassMinus;
   static const FaIconData magnifyingGlass = FontAwesomeIcons.magnifyingGlass;
+  static const FaIconData github = FontAwesomeIcons.github;
+  static const FaIconData mugHot = FontAwesomeIcons.mugHot;
+  static const FaIconData gear = FontAwesomeIcons.gear;
+  static const FaIconData anglesLeft = FontAwesomeIcons.anglesLeft;
+  static const FaIconData anglesRight = FontAwesomeIcons.anglesRight;
+  static const FaIconData grip = FontAwesomeIcons.grip;
 }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../icons/xora_icon.dart';
+import '../../icons/xora_icons.dart';
 
 enum NexoSidebarState { expanded, collapsed, grid }
 
@@ -60,12 +62,12 @@ class _NexoSidebarState extends State<NexoSidebar> {
           if (widget.header != null) widget.header!,
           IconButton(
             onPressed: _cycle,
-            icon: FaIcon(
+            icon: XoraIcon(
               _state == NexoSidebarState.expanded
-                  ? FontAwesomeIcons.anglesLeft
+                  ? XoraIcons.anglesLeft
                   : _state == NexoSidebarState.collapsed
-                      ? FontAwesomeIcons.anglesRight
-                      : FontAwesomeIcons.grip,
+                      ? XoraIcons.anglesRight
+                      : XoraIcons.grip,
             ),
             tooltip: 'Toggle sidebar',
           ),
@@ -103,7 +105,7 @@ class _SidebarTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     return ListTile(
-      leading: FaIcon(item.icon, color: item.selected ? scheme.primary : null),
+      leading: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
       title: collapsed ? null : Text(item.label),
       selected: item.selected,
       onTap: item.onTap,
@@ -123,7 +125,7 @@ class _GridTile extends StatelessWidget {
     return InkWell(
       onTap: item.onTap,
       child: Center(
-        child: FaIcon(item.icon, color: item.selected ? scheme.primary : null),
+        child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
       ),
     );
   }
