@@ -32,4 +32,4 @@ El formato de este registro está basado en [Keep a Changelog](https://keepachan
 
 ---
 
-[Sin publicar]: https://github.com/Nexora-Company/NexoraTemplate/commits/main
+[Sin publicar]: https://github.com/Nexora-Company/Xora/commits/main

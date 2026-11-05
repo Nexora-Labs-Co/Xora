@@ -1,18 +1,18 @@
 <p align="center">
   <a href="https://nexora.dev">
-    <img src="assets/Xora-Github.svg" alt="NexoraTemplate Preview" style="border-radius: 20px;" width="100%" />
+    <img src="assets/Xora-Github.svg" alt="Xora Preview" style="border-radius: 20px;" width="100%" />
   </a>
 </p>
 
 <p align="center">
-  <h1 align="center">NexoraTemplate</h1>
-  <p align="center"><strong>Plantilla base y estándar de arquitectura para nuevos repositorios de Nexora</strong></p>
-  <p align="center">Acelera el desarrollo inicial manteniendo la cohesión, calidad y convenciones de diseño de la organización.</p>
+  <h1 align="center">Xora</h1>
+  <p align="center"><strong>Kit de UI y sistema de diseño de Nexora para Flutter</strong></p>
+  <p align="center">Componentes, tokens y layouts responsivos para aplicaciones Flutter de Nexora.</p>
 </p>
 
 <p align="center">
   <img alt="PolyForm Noncommercial 1.0.0" src="https://img.shields.io/badge/License-PolyForm--Noncommercial--1.0.0-blue?style=flat-square" />
-  <img alt="Status: Plantilla" src="https://img.shields.io/badge/Status-Plantilla-22C55E?style=flat-square" />
+  <img alt="Status: Activo" src="https://img.shields.io/badge/Status-Activo-22C55E?style=flat-square" />
   <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-brightgreen?style=flat-square" />
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square" />
 </p>
@@ -38,76 +38,82 @@
 
 ## Estado del proyecto
 
-> **Estado actual:** Activo / En uso como plantilla oficial de Nexora.
+> **Estado actual:** Activo / En desarrollo.
 
 ## Acerca de
 
-**NexoraTemplate** es el punto de partida estandarizado para la creación de nuevos repositorios dentro del ecosistema de Nexora. Su objetivo principal es eliminar la fricción inicial al configurar un proyecto nuevo, asegurando que todos los desarrollos cumplan con los estándares de documentación, estructura y gobernanza definidos por la organización.
+**Xora** es el sistema de diseño y kit de UI de Nexora para Flutter. Incluye tokens de diseño, componentes reutilizables y layouts responsivos (Nexo, One, Slate) para acelerar el desarrollo de aplicaciones manteniendo la cohesión visual de la organización.
 
 ## Características principales
 
-- **Estandarización inmediata:** Incluye documentación base (`CONTRIBUTING.md`, `SECURITY.md`, `CHANGELOG.md`).
-- **Convenciones preconfiguradas:** Alineado con los flujos de trabajo y buenas prácticas de Nexora.
-- **Base limpia y modular:** Diseñado para adaptarse rápidamente a cualquier tipo de stack tecnológico (`{{TODO: definir stack}}`).
+- **Tokens de diseño:** colores, tipografía, espaciado, radios y sombras centralizados.
+- **Componentes reutilizables:** botones, campos de texto, tarjetas, insignias, avatares, listas y más.
+- **Layouts responsivos:** Nexo (escritorio), One (móvil) y Slate (tableta).
+- **Tema claro y oscuro:** `XoraTheme.light()` y `XoraTheme.dark()`.
+- **App de ejemplo:** showcase aislado en `example/`.
 
 ## Tecnologías y Stack
 
-- `{{TODO: Lenguaje / Framework principal - e.g., TypeScript, Node.js, Next.js}}`
-- `{{TODO: Estilos / UI - e.g., Tailwind CSS}}`
-- `{{TODO: Herramientas de calidad de código - e.g., ESLint, Prettier}}`
+- Flutter / Dart
+- FontAwesome Icons (`XoraIcons`)
+- Google Sans (UI) / Gliker (logos)
 
 ## Requisitos previos
 
-Antes de comenzar, asegúrate de contar con lo siguiente en tu entorno de desarrollo:
-
-- `{{TODO: Requisito 1 - e.g., Node.js (versión 18.x o superior)}}`
-- `{{TODO: Requisito 2 - e.g., Gestor de paquetes npm, pnpm o yarn}}`
+- Flutter SDK (stable)
+- Dart SDK (incluido con Flutter)
 
 ## Instalación
 
-Clona este repositorio y configura el entorno inicial ejecutando los siguientes comandos:
-
 ```bash
 # 1. Clona el repositorio
-git clone [https://github.com/tu-organizacion/NexoraTemplate.git](https://github.com/tu-organizacion/NexoraTemplate.git) mi-nuevo-proyecto
+git clone https://github.com/Nexora-Labs-Co/Xora.git
+cd Xora
 
-# 2. Entra al directorio
-cd mi-nuevo-proyecto
+# 2. Instala dependencias del paquete
+flutter pub get
 
-# 3. Instala las dependencias
-{{TODO: comando de instalación, ej. npm install}}
+# 3. Instala dependencias del ejemplo
+cd example && flutter pub get
 ```
 
 ## Uso
 
-Instrucciones rápidas para poner en marcha el proyecto:
-
 ```bash
-# Ejecutar en entorno de desarrollo
-{{TODO: comando de desarrollo, ej. npm run dev}}
+# Ejecutar el showcase en Chrome
+cd example && flutter run -d chrome
 
+# Compilar para web
+cd example && flutter build web --no-tree-shake-icons
 ```
-
-Visita `http://localhost:3000` (o el puerto correspondiente) para visualizar la aplicación.
 
 ## Estructura del proyecto
 
 ```text
 ./
-├── .github/              # Plantillas de Issues, Pull Requests y workflows
-├── src/                  # Código fuente del proyecto `{{TODO}}`
-├── CONTRIBUTING.md       # Guía para contribuidores
-├── SECURITY.md           # Política de seguridad y vulnerabilidades
+├── lib/                  # Paquete Xora
+│   ├── xora.dart         # Exportación principal
+│   └── src/
+│       ├── theme/        # Tokens de diseño
+│       ├── components/   # Componentes UI
+│       ├── layouts/      # Layouts responsivos (Nexo, One, Slate)
+│       └── icons/        # Iconos FontAwesome (XoraIcons, XoraIcon)
+├── example/              # App de ejemplo aislada
+├── assets/               # Recursos del paquete
+├── AGENTS.md             # Instrucciones para agentes
+├── CONTRIBUTING.md       # Guía de contribución
+├── SECURITY.md           # Política de seguridad
 ├── CHANGELOG.md          # Historial de cambios
 └── README.md             # Documentación principal
-
 ```
 
 ## Hoja de ruta
 
-- [ ] Completar la configuración inicial del stack tecnológico (`{{TODO}}`).
-- [ ] Implementar la primera versión estable (`v1.0.0`).
-- [ ] Configurar pipelines de CI/CD automatizados.
+- [x] Configuración inicial del kit de UI.
+- [x] Componentes base y tokens de diseño.
+- [x] Layouts responsivos Nexo, One y Slate.
+- [ ] Ampliar catálogo de componentes.
+- [ ] Documentación de componentes.
 
 ## Contribuir
 

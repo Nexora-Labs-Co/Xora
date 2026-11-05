@@ -23,8 +23,7 @@ Las versiones del proyecto que actualmente reciben actualizaciones de seguridad 
 
 | Versión                 | Soportada |
 | ----------------------- | --------- |
-| `{{TODO: e.g., 1.x.x}}` | [x] Sí    |
-| `{{TODO: e.g., 0.x.x}}` | [ ] No    |
+| `0.1.x` | [x] Sí    |
 
 _(Actualiza esta tabla conforme el proyecto evolucione y se emitan releases)._
 
@@ -76,3 +75,4 @@ Solicitamos encarecidamente a los investigadores que **no divulguen públicament
 ## Reconocimiento
 
 Agradecemos a la comunidad de seguridad y a los desarrolladores que contribuyen de forma responsable a mantener la integridad de nuestros proyectos. Los reportes válidos y verificados recibirán el crédito correspondiente en nuestras notas de versión (CHANGELOG), previa autorización del colaborador.
+

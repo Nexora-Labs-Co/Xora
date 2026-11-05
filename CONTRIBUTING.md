@@ -49,12 +49,16 @@ Sigue estos pasos para realizar contribuciones al repositorio:
 Para configurar el entorno de trabajo localmente, ejecuta los siguientes comandos:
 
 ```bash
-# Instalar dependencias
-{{TODO: comando de instalación, ej. npm install}}
+# Instalar dependencias del paquete
+flutter pub get
 
-# Iniciar servidor de desarrollo
-{{TODO: comando de desarrollo, ej. npm run dev}}
+# Instalar dependencias del ejemplo
+cd example && flutter pub get
 
-# Ejecutar la suite de pruebas
-{{TODO: comando de pruebas, ej. npm test}}
+# Analizar código
+flutter analyze
+
+# Ejecutar pruebas
+flutter test
 ```
+
