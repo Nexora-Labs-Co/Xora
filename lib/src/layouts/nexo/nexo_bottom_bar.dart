@@ -16,8 +16,8 @@ class NexoBottomBar extends StatelessWidget {
           IconButton(
             onPressed: () =>
                 launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-            icon: const XoraIcon(XoraIcons.github),
-            iconSize: 20,
+            icon: const XoraIcon(XoraIcons.github, size: 17),
+            iconSize: 17,
             hoverColor: Colors.transparent,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -26,8 +26,8 @@ class NexoBottomBar extends StatelessWidget {
           IconButton(
             onPressed: () =>
                 launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-            icon: const XoraIcon(XoraIcons.mugHot),
-            iconSize: 20,
+            icon: const XoraIcon(XoraIcons.mugHot, size: 17),
+            iconSize: 17,
             hoverColor: Colors.transparent,
             splashColor: Colors.transparent,
             highlightColor: Colors.transparent,
@@ -57,4 +57,3 @@ class NexoBottomBar extends StatelessWidget {
     );
   }
 }
-
