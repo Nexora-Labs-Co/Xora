@@ -6,7 +6,13 @@ import '../../icons/xora_icons.dart';
 import '../../theme/xora_spacing.dart';
 
 class NexoBottomBar extends StatelessWidget {
-  const NexoBottomBar({super.key, this.appVersion, this.actions, this.onToggleTheme, this.isDark = false});
+  const NexoBottomBar({
+    super.key,
+    this.appVersion,
+    this.actions,
+    this.onToggleTheme,
+    this.isDark = false,
+  });
 
   final String? appVersion;
   final List<Widget>? actions;
@@ -15,19 +21,19 @@ class NexoBottomBar extends StatelessWidget {
 
   List<Widget> get _actions => (actions == null || actions!.isEmpty)
       ? [
-        if (onToggleTheme != null)
+          if (onToggleTheme != null)
+            IconButton(
+              onPressed: onToggleTheme,
+              icon: XoraIcon(isDark ? XoraIcons.sun : XoraIcons.moon, size: 17),
+              iconSize: 17,
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+              tooltip: 'Tema',
+            ),
           IconButton(
-            onPressed: onToggleTheme,
-            icon: XoraIcon(isDark ? XoraIcons.sun : XoraIcons.moon),
-            iconSize: 17,
-            hoverColor: Colors.transparent,
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-            tooltip: 'Tema',
-          ),
-        IconButton(
-          onPressed: () =>
-              launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+            onPressed: () =>
+                launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
             icon: const XoraIcon(XoraIcons.github, size: 17),
             iconSize: 17,
             hoverColor: Colors.transparent,
@@ -69,4 +75,3 @@ class NexoBottomBar extends StatelessWidget {
     );
   }
 }
-
