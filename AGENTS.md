@@ -13,7 +13,7 @@
 - Design tokens: `lib/src/theme/` (`XoraColors`, `XoraSpacing`, `XoraRadius`, `XoraTypography`, `XoraShadows`, `XoraTheme`)
 - Components: `lib/src/components/{buttons,inputs,surfaces,feedback,data_display}/`
 - Theme entrypoints: `XoraTheme.light()` / `XoraTheme.dark()`
-- Design: primary `#A50021`, background `#EBF5EE`, foreground `#090C02`; fonts Google Sans (UI) / Gliker (logos); icons Phosphor (`XoraIcons`); responsive layouts Nexo (desktop), One (mobile), Slate (tablet)
+- Design: primary `#A50021`, background `#EBF5EE`, foreground `#090C02`; fonts Google Sans (UI) / Gliker (logos); icons FontAwesome (`XoraIcons`); responsive layouts Nexo (desktop), One (mobile), Slate (tablet)
 
 ## Conventions
 - Branches: `feat/...`, `fix/...`, `docs/...`, `refactor/...`
