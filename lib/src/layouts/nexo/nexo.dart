@@ -50,11 +50,9 @@ class _XoraNexoState extends State<XoraNexo> {
 
   void _toggleSidebar() {
     setState(() {
-      _sidebarState = switch (_sidebarState) {
-        NexoSidebarState.expanded => NexoSidebarState.collapsed,
-        NexoSidebarState.collapsed => NexoSidebarState.grid,
-        NexoSidebarState.grid => NexoSidebarState.expanded,
-      };
+      _sidebarState = _sidebarState == NexoSidebarState.expanded
+          ? NexoSidebarState.collapsed
+          : NexoSidebarState.expanded;
     });
   }
 
@@ -88,9 +86,7 @@ class _XoraNexoState extends State<XoraNexo> {
                       icon: XoraIcon(
                         _sidebarState == NexoSidebarState.expanded
                             ? XoraIcons.anglesLeft
-                            : _sidebarState == NexoSidebarState.collapsed
-                                ? XoraIcons.anglesRight
-                                : XoraIcons.grip,
+                            : XoraIcons.anglesRight,
                       ),
                       tooltip: 'Cambiar barra lateral',
                     ),
