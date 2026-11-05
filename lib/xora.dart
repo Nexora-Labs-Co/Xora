@@ -22,6 +22,8 @@ export 'src/components/data_display/xora_list_tile.dart';
 export 'src/layouts/xora_breakpoints.dart';
 export 'src/layouts/xora_responsive.dart';
 export 'src/layouts/one/one.dart';
+export 'src/layouts/one/one_top_bar.dart';
+export 'src/layouts/one/one_bottom_bar.dart';
 export 'src/layouts/slate/slate.dart';
 export 'src/layouts/nexo/nexo.dart';
 export 'src/layouts/nexo/nexo_sidebar.dart';
