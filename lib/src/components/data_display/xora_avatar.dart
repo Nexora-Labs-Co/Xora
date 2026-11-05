@@ -19,7 +19,7 @@ class XoraAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = backgroundColor ?? XoraColors.primary;
+    final bg = backgroundColor ?? Theme.of(context).colorScheme.primary;
     return CircleAvatar(
       radius: size / 2,
       backgroundColor: bg,

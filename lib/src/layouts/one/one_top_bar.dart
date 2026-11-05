@@ -84,23 +84,30 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                 const Spacer(),
                 ...actions,
                 const SizedBox(width: XoraSpacing.md),
-                InkWell(
-                  borderRadius: BorderRadius.circular(999),
-                  onTap: onAvatarTap ??
-                      () => Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) => OneAccountScreen(
-                                userName: accountName,
-                                userStatus: accountStatus,
-                                userInitials: accountInitials,
-                                avatarPath: accountAvatarPath,
-                                onToggleTheme: onToggleTheme,
-                                isDark: isDark,
-                                onProfileChanged: onProfileChanged,
+                Container(
+                  padding: const EdgeInsets.all(2),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: scheme.primary, width: 2),
+                  ),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(999),
+                    onTap: onAvatarTap ??
+                        () => Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (_) => OneAccountScreen(
+                                  userName: accountName,
+                                  userStatus: accountStatus,
+                                  userInitials: accountInitials,
+                                  avatarPath: accountAvatarPath,
+                                  onToggleTheme: onToggleTheme,
+                                  isDark: isDark,
+                                  onProfileChanged: onProfileChanged,
+                                ),
                               ),
                             ),
-                          ),
-                  child: avatarWidget,
+                    child: avatarWidget,
+                  ),
                 ),
               ],
             ),

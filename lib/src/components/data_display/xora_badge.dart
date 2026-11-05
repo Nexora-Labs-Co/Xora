@@ -23,7 +23,7 @@ class XoraBadge extends StatelessWidget {
   Widget build(BuildContext context) {
     final (bg, fg) = switch (variant) {
       XoraBadgeVariant.neutral => (XoraColors.surfaceVariant, XoraColors.textSecondary),
-      XoraBadgeVariant.primary => (XoraColors.primary.withValues(alpha: 0.12), XoraColors.primary),
+      XoraBadgeVariant.primary => (Theme.of(context).colorScheme.primary.withValues(alpha: 0.12), Theme.of(context).colorScheme.primary),
       XoraBadgeVariant.success => (XoraColors.success.withValues(alpha: 0.12), XoraColors.success),
       XoraBadgeVariant.warning => (XoraColors.warning.withValues(alpha: 0.12), XoraColors.warning),
       XoraBadgeVariant.danger => (XoraColors.danger.withValues(alpha: 0.12), XoraColors.danger),
