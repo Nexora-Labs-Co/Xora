@@ -59,8 +59,8 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                   leading!,
                   const SizedBox(width: XoraSpacing.md),
                   ?title,
-                ] else
-                  ?title,
+                ] else if (title != null)
+                  Expanded(child: Center(child: title!)),
                 const Spacer(),
                 ...actions,
                 const SizedBox(width: XoraSpacing.md),
