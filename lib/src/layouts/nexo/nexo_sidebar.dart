@@ -45,7 +45,7 @@ class NexoSidebar extends StatelessWidget {
   final Widget? userAvatar;
   final String? userInitials;
 
-  bool get _expanded => state == NexoSidebarState.expanded;
+  bool get _collapsed => state == NexoSidebarState.collapsed;
   bool get _grid => state == NexoSidebarState.grid;
 
   @override
@@ -55,14 +55,16 @@ class NexoSidebar extends StatelessWidget {
       color: scheme.surface,
       child: Column(
         children: [
-          if (_expanded && appName != null)
+          if (appName != null)
             Padding(
               padding: const EdgeInsets.all(XoraSpacing.lg),
-              child: Align(
-                alignment: Alignment.centerLeft,
+              child: Center(
                 child: Text(
-                  appName!,
-                  style: XoraTypography.logo(22).copyWith(color: scheme.onSurface),
+                  _collapsed
+                      ? appName!.substring(0, 1).toUpperCase()
+                      : appName!.toUpperCase(),
+                  style: XoraTypography.logo(_collapsed ? 24 : 28)
+                      .copyWith(color: scheme.onSurface),
                 ),
               ),
             ),
@@ -79,7 +81,7 @@ class NexoSidebar extends StatelessWidget {
                 : ListView(
                     children: [
                       for (final item in items)
-                        _SidebarTile(item: item, collapsed: !_expanded),
+                        _SidebarTile(item: item, collapsed: _collapsed),
                     ],
                   ),
           ),
@@ -87,8 +89,12 @@ class NexoSidebar extends StatelessWidget {
             const Divider(height: 1),
             Padding(
               padding: const EdgeInsets.all(XoraSpacing.md),
-              child: _expanded
-                  ? Row(
+              child: _collapsed
+                  ? Center(
+                      child: userAvatar ??
+                          XoraAvatar(initials: userInitials ?? '', size: 32),
+                    )
+                  : Row(
                       children: [
                         userAvatar ??
                             XoraAvatar(initials: userInitials ?? ''),
@@ -108,10 +114,6 @@ class NexoSidebar extends StatelessWidget {
                           ),
                         ),
                       ],
-                    )
-                  : Center(
-                      child: userAvatar ??
-                          XoraAvatar(initials: userInitials ?? '', size: 24),
                     ),
             ),
           ],
@@ -130,9 +132,20 @@ class _SidebarTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    if (collapsed) {
+      return InkWell(
+        onTap: item.onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: XoraSpacing.md),
+          child: Center(
+            child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+          ),
+        ),
+      );
+    }
     return ListTile(
       leading: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
-      title: collapsed ? null : Text(item.label),
+      title: Text(item.label),
       selected: item.selected,
       onTap: item.onTap,
       dense: true,
@@ -151,7 +164,7 @@ class _GridTile extends StatelessWidget {
     return InkWell(
       onTap: item.onTap,
       child: Center(
-        child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+        child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null, size: 28),
       ),
     );
   }

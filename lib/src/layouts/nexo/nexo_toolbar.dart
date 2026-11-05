@@ -25,22 +25,27 @@ class NexoToolbar extends StatelessWidget implements PreferredSizeWidget {
     return Material(
       color: scheme.surface,
       elevation: 0,
-      child: SizedBox(
-        height: height,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: XoraSpacing.lg),
-          child: Row(
-            children: [
-              if (leading != null) ...[
-                leading!,
-                const SizedBox(width: XoraSpacing.md),
+      child: Container(
+        decoration: BoxDecoration(
+          border: Border(bottom: BorderSide(color: scheme.outline)),
+        ),
+        child: SizedBox(
+          height: height,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: XoraSpacing.lg),
+            child: Row(
+              children: [
+                if (leading != null) ...[
+                  leading!,
+                  const SizedBox(width: XoraSpacing.md),
+                ],
+                if (title != null)
+                  Expanded(child: title!)
+                else
+                  const Spacer(),
+                ...actions,
               ],
-              if (title != null)
-                Expanded(child: title!)
-              else
-                const Spacer(),
-              ...actions,
-            ],
+            ),
           ),
         ),
       ),
