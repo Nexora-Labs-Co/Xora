@@ -40,7 +40,7 @@ class OneBottomBar extends StatelessWidget {
               vertical: XoraSpacing.sm,
             ),
             decoration: BoxDecoration(
-              color: scheme.surface,
+              color: Colors.transparent,
               borderRadius: BorderRadius.circular(XoraRadius.full),
               border: Border.all(color: scheme.outline),
               boxShadow: const [
