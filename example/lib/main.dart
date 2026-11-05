@@ -47,6 +47,8 @@ class ShowcaseHome extends StatefulWidget {
 
 class _ShowcaseHomeState extends State<ShowcaseHome> {
   int _index = 0;
+  String _userName = 'Usuario';
+  String? _avatarPath;
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +61,7 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
     return Scaffold(
       body: XoraResponsive(
         mobile: XoraOne(
-          topBar: OneTopBar(appName: 'Xora', avatar: XoraAvatar(initials: 'U'), onToggleTheme: widget.onToggleTheme, isDark: widget.dark),
+          topBar: OneTopBar(appName: 'Xora', avatar: _avatarPath == null ? XoraAvatar(initials: _userName) : null, accountAvatarPath: _avatarPath, accountName: _userName, accountStatus: 'Premium', accountInitials: _userName, onToggleTheme: widget.onToggleTheme, isDark: widget.dark, onProfileChanged: (name, path) => setState(() { _userName = name; _avatarPath = path; }),),
           bottomBar: OneBottomBar(
             selectedIndex: _index,
             onTap: (i) => setState(() => _index = i),
