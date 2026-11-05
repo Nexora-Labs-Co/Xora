@@ -24,6 +24,7 @@ export 'src/layouts/xora_responsive.dart';
 export 'src/layouts/one/one.dart';
 export 'src/layouts/one/one_top_bar.dart';
 export 'src/layouts/one/one_account_screen.dart';
+export 'src/layouts/one/one_profile_edit_dialog.dart';
 export 'src/layouts/one/one_bottom_bar.dart';
 export 'src/layouts/slate/slate.dart';
 export 'src/layouts/nexo/nexo.dart';

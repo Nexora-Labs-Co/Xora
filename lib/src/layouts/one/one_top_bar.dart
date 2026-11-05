@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import '../../components/data_display/xora_avatar.dart';
@@ -14,8 +16,10 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.accountName = 'Usuario',
     this.accountStatus = 'Free',
     this.accountInitials = 'U',
+    this.accountAvatarPath,
     this.onToggleTheme,
     this.isDark = false,
+    this.onProfileChanged,
     this.leading,
     this.title,
     this.actions = const [],
@@ -28,7 +32,9 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
   final String accountName;
   final String accountStatus;
   final String accountInitials;
+  final String? accountAvatarPath;
   final VoidCallback? onToggleTheme;
+  final void Function(String name, String? avatarPath)? onProfileChanged;
   final bool isDark;
   final Widget? leading;
   final Widget? title;
@@ -42,7 +48,17 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
     final avatarWidget = avatar ??
-        XoraAvatar(initials: accountInitials);
+        (accountAvatarPath == null
+            ? XoraAvatar(initials: accountInitials)
+            : ClipOval(
+                child: Image.file(
+                  File(accountAvatarPath!),
+                  width: 32,
+                  height: 32,
+                  fit: BoxFit.cover,
+                  errorBuilder: (_, _, _) => XoraAvatar(initials: accountInitials),
+                ),
+              ));
     return Material(
       color: backgroundColor ?? scheme.surface,
       elevation: 0,
@@ -77,8 +93,10 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                                 userName: accountName,
                                 userStatus: accountStatus,
                                 userInitials: accountInitials,
+                                avatarPath: accountAvatarPath,
                                 onToggleTheme: onToggleTheme,
                                 isDark: isDark,
+                                onProfileChanged: onProfileChanged,
                               ),
                             ),
                           ),
