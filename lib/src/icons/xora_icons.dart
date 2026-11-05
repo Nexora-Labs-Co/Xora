@@ -24,5 +24,9 @@ class XoraIcons {
   static const FaIconData user = FontAwesomeIcons.user;
   static const FaIconData heart = FontAwesomeIcons.heart;
   static const FaIconData list = FontAwesomeIcons.list;
+  static const FaIconData home = FontAwesomeIcons.house;
+  static const FaIconData music = FontAwesomeIcons.music;
+  static const FaIconData locationDot = FontAwesomeIcons.locationDot;
+  static const FaIconData cartShopping = FontAwesomeIcons.cartShopping;
 }
 
