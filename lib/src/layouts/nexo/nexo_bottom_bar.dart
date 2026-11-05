@@ -1,12 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
+import '../../icons/xora_icon.dart';
+import '../../icons/xora_icons.dart';
 import '../../theme/xora_spacing.dart';
 
 class NexoBottomBar extends StatelessWidget {
-  const NexoBottomBar({super.key, this.appVersion, this.actions = const []});
+  const NexoBottomBar({
+    super.key,
+    this.appVersion,
+    this.actions,
+  });
 
   final String? appVersion;
-  final List<Widget> actions;
+  final List<Widget>? actions;
+
+  List<Widget> get _actions => actions ??
+      [
+        IconButton(
+          onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+          icon: const XoraIcon(XoraIcons.github),
+          tooltip: 'GitHub',
+        ),
+        IconButton(
+          onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
+          icon: const XoraIcon(XoraIcons.mugHot),
+          tooltip: 'Ko-fi',
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +44,10 @@ class NexoBottomBar extends StatelessWidget {
           if (appVersion != null)
             Text(appVersion!, style: Theme.of(context).textTheme.bodySmall),
           const Spacer(),
-          ...actions,
+          ..._actions,
         ],
       ),
     );
   }
 }
+
