@@ -61,22 +61,26 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         title: const Text('Xora UI Kit'),
         actions: [
           XoraIconButton(
-            icon: Icon(widget.dark ? Icons.light_mode : Icons.dark_mode),
+            icon: Icon(widget.dark ? XoraIcons.sun : XoraIcons.moon),
             onPressed: widget.onToggleTheme,
             tooltip: 'Toggle theme',
           ),
           const SizedBox(width: 8),
         ],
       ),
-      body: pages[_index],
+      body: XoraResponsive(
+        mobile: XoraOne(child: pages[_index]),
+        tablet: XoraSlate(child: pages[_index]),
+        desktop: XoraNexo(child: pages[_index]),
+      ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.palette_outlined), label: 'Foundations'),
-          NavigationDestination(icon: Icon(Icons.widgets_outlined), label: 'Components'),
-          NavigationDestination(icon: Icon(Icons.edit_note_outlined), label: 'Forms'),
-          NavigationDestination(icon: Icon(Icons.notifications_outlined), label: 'Feedback'),
+        destinations: [
+          NavigationDestination(icon: Icon(XoraIcons.palette), label: 'Foundations'),
+          NavigationDestination(icon: Icon(XoraIcons.squaresFour), label: 'Components'),
+          NavigationDestination(icon: Icon(XoraIcons.notePencil), label: 'Forms'),
+          NavigationDestination(icon: Icon(XoraIcons.bell), label: 'Feedback'),
         ],
       ),
     );
@@ -190,7 +194,7 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         const XoraButton(label: 'Loading', loading: true),
         const SizedBox(height: 8),
-        const XoraButton(label: 'With icon', icon: Icon(Icons.add, size: 16, color: Colors.white)),
+        XoraButton(label: "With icon", icon: Icon(XoraIcons.plus, size: 16, color: Colors.white)),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
@@ -224,19 +228,19 @@ class ComponentsPage extends StatelessWidget {
         XoraCard(
           padding: EdgeInsets.zero,
           child: Column(
-            children: const [
+            children: [
               XoraListTile(
                 leading: XoraAvatar(initials: 'JD'),
                 title: Text('Jane Doe'),
                 subtitle: Text('Product Designer'),
-                trailing: Icon(Icons.chevron_right),
+                trailing: Icon(XoraIcons.caretRight),
               ),
               XoraDivider(indent: 72),
               XoraListTile(
                 leading: XoraAvatar(initials: 'MK'),
                 title: Text('Mark Kent'),
                 subtitle: Text('Engineer'),
-                trailing: Icon(Icons.chevron_right),
+                trailing: Icon(XoraIcons.caretRight),
               ),
             ],
           ),
@@ -284,7 +288,7 @@ class _FormsPageState extends State<FormsPage> {
           hint: 'you@nexora.dev',
           keyboardType: TextInputType.emailAddress,
           errorText: _emailError,
-          prefixIcon: const Icon(Icons.mail_outline),
+          prefixIcon: Icon(XoraIcons.envelopeSimple),
         ),
         const SizedBox(height: 16),
         XoraSwitch(
@@ -339,8 +343,8 @@ class FeedbackPage extends StatelessWidget {
           onPressed: () => XoraSnackbar.show(context, message: 'Something went wrong', type: XoraSnackbarType.error),
         ),
         const SizedBox(height: 24),
-        const XoraEmptyState(
-          icon: Icon(Icons.inbox_outlined),
+        XoraEmptyState(
+          icon: Icon(XoraIcons.tray),
           title: 'No items yet',
           subtitle: 'Create your first item to get started.',
         ),
@@ -349,7 +353,7 @@ class FeedbackPage extends StatelessWidget {
         const SizedBox(height: 24),
         XoraCard(
           child: XoraEmptyState(
-            icon: Icon(Icons.search_off),
+            icon: Icon(XoraIcons.magnifyingGlassMinus),
             title: 'No results',
             subtitle: 'Try adjusting your search filters.',
             action: XoraButton(label: 'Clear filters', variant: XoraButtonVariant.outline),
