@@ -17,3 +17,4 @@ class XoraBreakpoints {
   static bool isDesktop(BuildContext context) =>
       MediaQuery.sizeOf(context).width >= tablet;
 }
+

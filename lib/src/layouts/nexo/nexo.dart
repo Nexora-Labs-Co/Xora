@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/xora_spacing.dart';
 
 class XoraNexo extends StatelessWidget {
-  const XoraNexo({super.key, required this.child});
+  const XoraNexo({
+    super.key,
+    required this.child,
+    this.leftSidebar,
+    this.rightPanel,
+    this.leftWidth = 260,
+    this.rightWidth = 320,
+  });
 
   final Widget child;
+  final Widget? leftSidebar;
+  final Widget? rightPanel;
+  final double leftWidth;
+  final double rightWidth;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(maxWidth: 1280),
-        child: Padding(
-          padding: const EdgeInsets.all(XoraSpacing.xxl),
-          child: child,
-        ),
-      ),
+    return Row(
+      children: [
+        if (leftSidebar != null)
+          SizedBox(width: leftWidth, child: leftSidebar),
+        if (leftSidebar != null) const VerticalDivider(width: 1),
+        Expanded(child: child),
+        if (rightPanel != null) const VerticalDivider(width: 1),
+        if (rightPanel != null)
+          SizedBox(width: rightWidth, child: rightPanel),
+      ],
     );
   }
 }
+

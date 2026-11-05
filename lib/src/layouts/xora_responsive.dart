@@ -26,3 +26,4 @@ class XoraResponsive extends StatelessWidget {
     return mobile;
   }
 }
+
