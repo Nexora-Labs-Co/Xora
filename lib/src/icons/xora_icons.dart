@@ -28,5 +28,23 @@ class XoraIcons {
   static const FaIconData music = FontAwesomeIcons.music;
   static const FaIconData locationDot = FontAwesomeIcons.locationDot;
   static const FaIconData cartShopping = FontAwesomeIcons.cartShopping;
+  static const FaIconData arrowBack = FontAwesomeIcons.arrowLeft;
+  static const FaIconData download = FontAwesomeIcons.download;
+  static const FaIconData favorite = FontAwesomeIcons.heart;
+  static const FaIconData image = FontAwesomeIcons.image;
+  static const FaIconData keyboardArrowDown = FontAwesomeIcons.chevronDown;
+  static const FaIconData lyrics = FontAwesomeIcons.microphone;
+  static const FaIconData moreHoriz = FontAwesomeIcons.ellipsis;
+  static const FaIconData moreVert = FontAwesomeIcons.ellipsisVertical;
+  static const FaIconData musicNote = FontAwesomeIcons.music;
+  static const FaIconData pause = FontAwesomeIcons.pause;
+  static const FaIconData playArrow = FontAwesomeIcons.play;
+  static const FaIconData playArrowRounded = FontAwesomeIcons.play;
+  static const FaIconData queueMusic = FontAwesomeIcons.bars;
+  static const FaIconData search = FontAwesomeIcons.magnifyingGlass;
+  static const FaIconData share = FontAwesomeIcons.share;
+  static const FaIconData shuffle = FontAwesomeIcons.shuffle;
+  static const FaIconData skipNext = FontAwesomeIcons.forwardStep;
+  static const FaIconData skipPrevious = FontAwesomeIcons.backwardStep;
 }
 
