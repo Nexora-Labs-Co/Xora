@@ -59,7 +59,7 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
     return Scaffold(
       body: XoraResponsive(
         mobile: XoraOne(
-          topBar: OneTopBar(appName: 'Xora', avatar: XoraAvatar(initials: 'U')),
+          topBar: OneTopBar(appName: 'Xora', avatar: XoraAvatar(initials: 'U'), onToggleTheme: widget.onToggleTheme, isDark: widget.dark),
           bottomBar: OneBottomBar(
             selectedIndex: _index,
             onTap: (i) => setState(() => _index = i),
