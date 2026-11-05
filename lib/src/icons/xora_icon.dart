@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../theme/xora_colors.dart';
+
 class XoraIcon extends StatefulWidget {
   const XoraIcon(
     this.icon, {
@@ -28,7 +30,10 @@ class _XoraIconState extends State<XoraIcon> {
   Widget build(BuildContext context) {
     final iconTheme = IconTheme.of(context);
     final size = widget.size ?? iconTheme.size ?? 24;
-    final color = widget.color ?? iconTheme.color;
+    final baseColor = widget.color ?? iconTheme.color;
+    final color = widget.hoverable && _hovering
+        ? XoraColors.primary
+        : baseColor;
     Widget icon = FaIcon(
       widget.icon,
       size: size,
@@ -37,17 +42,10 @@ class _XoraIconState extends State<XoraIcon> {
     );
     if (widget.hoverable) {
       icon = MouseRegion(
+        cursor: SystemMouseCursors.click,
         onEnter: (_) => setState(() => _hovering = true),
         onExit: (_) => setState(() => _hovering = false),
-        child: AnimatedScale(
-          scale: _hovering ? 1.1 : 1.0,
-          duration: const Duration(milliseconds: 150),
-          child: AnimatedOpacity(
-            opacity: _hovering ? 0.8 : 1.0,
-            duration: const Duration(milliseconds: 150),
-            child: icon,
-          ),
-        ),
+        child: icon,
       );
     }
     return icon;
