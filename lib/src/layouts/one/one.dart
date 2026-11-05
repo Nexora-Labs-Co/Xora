@@ -1,14 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/xora_spacing.dart';
-
 class XoraOne extends StatelessWidget {
-  const XoraOne({
-    super.key,
-    required this.child,
-    this.topBar,
-    this.bottomBar,
-  });
+  const XoraOne({super.key, required this.child, this.topBar, this.bottomBar});
 
   final Widget child;
   final Widget? topBar;
@@ -21,24 +14,13 @@ class XoraOne extends StatelessWidget {
         Column(
           children: [
             ?topBar,
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.all(XoraSpacing.lg),
-                child: child,
-              ),
-            ),
+            Expanded(child: child),
           ],
         ),
         ?(bottomBar == null
             ? null
-            : Positioned(
-                left: 0,
-                right: 0,
-                bottom: 0,
-                child: bottomBar!,
-              )),
+            : Positioned(left: 0, right: 0, bottom: 0, child: bottomBar!)),
       ],
     );
   }
 }
-
