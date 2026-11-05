@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:xora/xora.dart';
 
 void main() {
@@ -115,22 +114,6 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             child: Text('Context panel for page ${_index + 1}'),
           ),
           appVersion: 'v0.1.0',
-          bottomActions: [
-            IconButton(
-              iconSize: 15,
-              onPressed: () =>
-                  launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-              icon: XoraIcon(XoraIcons.github),
-              tooltip: 'GitHub',
-            ),
-            IconButton(
-              iconSize: 15,
-              onPressed: () =>
-                  launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-              icon: XoraIcon(XoraIcons.mugHot),
-              tooltip: 'Ko-fi',
-            ),
-          ],
           child: pages[_index],
         ),
       ),
