@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xora/xora.dart';
 
 void main() {
@@ -105,19 +106,16 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
           appVersion: 'v0.1.0',
           bottomActions: [
             IconButton(
-              onPressed: () {},
+              iconSize: 20,
+              onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
               icon: const FaIcon(FontAwesomeIcons.github),
               tooltip: 'GitHub',
             ),
             IconButton(
-              onPressed: () {},
+              iconSize: 20,
+              onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
               icon: const FaIcon(FontAwesomeIcons.mugHot),
               tooltip: 'Ko-fi',
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const FaIcon(FontAwesomeIcons.gear),
-              tooltip: 'Settings',
             ),
           ],
           child: pages[_index],
