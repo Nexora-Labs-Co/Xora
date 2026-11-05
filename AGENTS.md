@@ -1,28 +1,28 @@
 # AGENTS.md
 
-## Repo type
-- Flutter UI kit named `xora` (Nexora design system). Package lives at repo root; isolated showcase app in `example/`.
+## Tipo de repositorio
+- Kit de UI en Flutter llamado `xora` (sistema de diseño de Nexora). El paquete vive en la raíz del repositorio; la app de ejemplo aislada está en `example/`.
 
-## Commands
-- Package: `flutter pub get && flutter analyze && flutter test`
-- Example: `cd example && flutter pub get && flutter analyze && flutter test`
-- Run showcase: `cd example && flutter run -d chrome` (or `flutter build web --no-tree-shake-icons`)
+## Comandos
+- Paquete: `flutter pub get && flutter analyze && flutter test`
+- Ejemplo: `cd example && flutter pub get && flutter analyze && flutter test`
+- Ejecutar showcase: `cd example && flutter run -d chrome` (o `flutter build web --no-tree-shake-icons`)
 
-## Structure
-- Barrel export: `lib/xora.dart`
-- Design tokens: `lib/src/theme/` (`XoraColors`, `XoraSpacing`, `XoraRadius`, `XoraTypography`, `XoraShadows`, `XoraTheme`)
-- Components: `lib/src/components/{buttons,inputs,surfaces,feedback,data_display}/`
-- Theme entrypoints: `XoraTheme.light()` / `XoraTheme.dark()`
-- Design: primary `#A50021`, background `#EBF5EE`, foreground `#090C02`; fonts Google Sans (UI) / Gliker (logos); icons FontAwesome (`XoraIcons`); responsive layouts Nexo (desktop), One (mobile), Slate (tablet)
+## Estructura
+- Exportación principal: `lib/xora.dart`
+- Tokens de diseño: `lib/src/theme/` (`XoraColors`, `XoraSpacing`, `XoraRadius`, `XoraTypography`, `XoraShadows`, `XoraTheme`)
+- Componentes: `lib/src/components/{buttons,inputs,surfaces,feedback,data_display}/`
+- Entradas de tema: `XoraTheme.light()` / `XoraTheme.dark()`
+- Diseño: primario `#A50021`, fondo `#EBF5EE`, primer plano `#090C02`; fuentes Google Sans (UI) / Gliker (logos); iconos FontAwesome (`XoraIcons`); layouts responsivos Nexo (escritorio), One (móvil), Slate (tableta)
 
-## Conventions
-- Branches: `feat/...`, `fix/...`, `docs/...`, `refactor/...`
-- Commits: Conventional Commits (e.g. `feat(ui): ...`)
-- Major changes need an Issue first; PRs target `main`.
+## Convenciones
+- Ramas: `feat/...`, `fix/...`, `docs/...`, `refactor/...`
+- Commits: Conventional Commits (p. ej. `feat(ui): ...`)
+- Los cambios grandes requieren un Issue primero; los PR van a `main`.
 
-## Governance
-- License: PolyForm Noncommercial 1.0.0; "Nexora" name/logo/trademarks require written permission.
-- Security: follow SECURITY.md reporting flow; no public disclosure.
+## Gobernanza
+- Licencia: PolyForm Noncommercial 1.0.0; el nombre/logotipo/marcas de "Nexora" requieren permiso por escrito.
+- Seguridad: seguir el flujo de reporte de SECURITY.md; sin divulgación pública.
 
-## Verification
-- Run `flutter analyze` + `flutter test` for both root package and `example` before finishing. No lint/typecheck beyond `flutter analyze`.
+## Verificación
+- Ejecutar `flutter analyze` + `flutter test` tanto en el paquete raíz como en `example` antes de terminar. No hay lint/typecheck más allá de `flutter analyze`.
