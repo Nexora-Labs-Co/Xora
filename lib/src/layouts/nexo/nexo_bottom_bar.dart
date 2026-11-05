@@ -12,7 +12,7 @@ class NexoBottomBar extends StatelessWidget {
   final List<Widget>? actions;
 
   List<Widget> get _actions =>
-      actions ??
+      (actions == null || actions!.isEmpty) ?
       [
         IconButton(
           onPressed: () =>
@@ -28,7 +28,7 @@ class NexoBottomBar extends StatelessWidget {
           iconSize: 15,
           tooltip: 'Ko-fi',
         ),
-      ];
+      ] : actions!;
 
   @override
   Widget build(BuildContext context) {
