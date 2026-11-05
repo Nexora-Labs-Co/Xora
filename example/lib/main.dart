@@ -59,7 +59,20 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
     ];
     return Scaffold(
       body: XoraResponsive(
-        mobile: XoraOne(child: pages[_index]),
+        mobile: XoraOne(
+          topBar: const OneTopBar(title: Text('Xora')),
+          bottomBar: OneBottomBar(
+            selectedIndex: _index,
+            onTap: (i) => setState(() => _index = i),
+            items: const [
+              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.palette), label: 'Home'),
+              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.tableCells), label: 'Components'),
+              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.penToSquare), label: 'Forms'),
+              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.bell), label: 'Feedback'),
+            ],
+          ),
+          child: pages[_index],
+        ),
         tablet: XoraSlate(child: pages[_index]),
         desktop: XoraNexo(
           leftSidebar: NexoSidebar(
