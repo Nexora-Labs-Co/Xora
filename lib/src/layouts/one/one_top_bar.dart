@@ -49,14 +49,14 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
     final scheme = Theme.of(context).colorScheme;
     final avatarWidget = avatar ??
         (accountAvatarPath == null
-            ? XoraAvatar(initials: accountInitials)
+            ? XoraAvatar(initials: accountInitials.isNotEmpty ? accountInitials.substring(0, 1) : 'U')
             : ClipOval(
                 child: Image.file(
                   File(accountAvatarPath!),
                   width: 32,
                   height: 32,
                   fit: BoxFit.cover,
-                  errorBuilder: (_, _, _) => XoraAvatar(initials: accountInitials),
+                  errorBuilder: (_, _, _) => XoraAvatar(initials: accountInitials.isNotEmpty ? accountInitials.substring(0, 1) : 'U'),
                 ),
               ));
     return Material(

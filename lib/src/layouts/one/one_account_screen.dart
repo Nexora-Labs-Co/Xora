@@ -81,7 +81,7 @@ class _OneAccountScreenState extends State<OneAccountScreen> {
               child: Row(
                 children: [
                   _avatarPath == null
-                      ? XoraAvatar(initials: _name, size: 56)
+                      ? XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56)
                       : ClipOval(
                           child: Image.file(
                             File(_avatarPath!),
@@ -89,7 +89,7 @@ class _OneAccountScreenState extends State<OneAccountScreen> {
                             height: 56,
                             fit: BoxFit.cover,
                             errorBuilder: (_, _, _) =>
-                                XoraAvatar(initials: _name, size: 56),
+                                XoraAvatar(initials: _name.isNotEmpty ? _name.substring(0, 1) : 'U', size: 56),
                           ),
                         ),
                   const SizedBox(width: XoraSpacing.md),
