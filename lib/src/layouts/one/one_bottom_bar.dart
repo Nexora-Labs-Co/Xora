@@ -68,6 +68,9 @@ class _OneBottomTile extends StatelessWidget {
     final color = selected ? scheme.primary : XoraColors.textSecondary;
     return InkWell(
       onTap: onTap,
+      hoverColor: Colors.transparent,
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [

@@ -30,6 +30,9 @@ class XoraIconButton extends StatelessWidget {
       borderRadius: BorderRadius.circular(XoraRadius.md),
       child: InkWell(
         onTap: onPressed,
+        hoverColor: Colors.transparent,
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         borderRadius: BorderRadius.circular(XoraRadius.md),
         child: SizedBox(
           width: size,
@@ -47,3 +50,4 @@ class XoraIconButton extends StatelessWidget {
     return Tooltip(message: tooltip!, child: button);
   }
 }
+

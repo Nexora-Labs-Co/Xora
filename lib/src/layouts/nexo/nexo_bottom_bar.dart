@@ -11,24 +11,30 @@ class NexoBottomBar extends StatelessWidget {
   final String? appVersion;
   final List<Widget>? actions;
 
-  List<Widget> get _actions =>
-      (actions == null || actions!.isEmpty) ?
-      [
-        IconButton(
-          onPressed: () =>
-              launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-          icon: const XoraIcon(XoraIcons.github, size: 15),
-          iconSize: 15,
-          tooltip: 'GitHub',
-        ),
-        IconButton(
-          onPressed: () =>
-              launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-          icon: const XoraIcon(XoraIcons.mugHot, size: 15),
-          iconSize: 15,
-          tooltip: 'Ko-fi',
-        ),
-      ] : actions!;
+  List<Widget> get _actions => (actions == null || actions!.isEmpty)
+      ? [
+          IconButton(
+            onPressed: () =>
+                launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
+            icon: const XoraIcon(XoraIcons.github, size: 15),
+            iconSize: 20,
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            tooltip: 'GitHub',
+          ),
+          IconButton(
+            onPressed: () =>
+                launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
+            icon: const XoraIcon(XoraIcons.mugHot, size: 15),
+            iconSize: 15,
+            hoverColor: Colors.transparent,
+            splashColor: Colors.transparent,
+            highlightColor: Colors.transparent,
+            tooltip: 'Ko-fi',
+          ),
+        ]
+      : actions!;
 
   @override
   Widget build(BuildContext context) {
@@ -51,4 +57,3 @@ class NexoBottomBar extends StatelessWidget {
     );
   }
 }
-
