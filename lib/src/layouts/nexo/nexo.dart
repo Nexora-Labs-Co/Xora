@@ -58,14 +58,18 @@ class _XoraNexoState extends State<XoraNexo> {
 
   @override
   Widget build(BuildContext context) {
-    final hasBottom = widget.appVersion != null || (widget.bottomActions?.isNotEmpty ?? false);
+    final hasBottom =
+        widget.appVersion != null ||
+        (widget.bottomActions?.isNotEmpty ?? false);
     return Column(
       children: [
         Expanded(
           child: Row(
             children: [
               SizedBox(
-                width: _sidebarState == NexoSidebarState.collapsed ? 72 : widget.leftWidth,
+                width: _sidebarState == NexoSidebarState.collapsed
+                    ? 72
+                    : widget.leftWidth,
                 child: NexoSidebar(
                   appName: widget.appName,
                   items: widget.sidebarItems,
@@ -81,7 +85,9 @@ class _XoraNexoState extends State<XoraNexo> {
               Expanded(
                 child: NexoCanvas(
                   toolbar: NexoToolbar(
-                    height: _sidebarState == NexoSidebarState.collapsed ? 58 : 62,
+                    height: _sidebarState == NexoSidebarState.collapsed
+                        ? 58
+                        : 63,
                     leading: IconButton(
                       onPressed: _toggleSidebar,
                       icon: XoraIcon(
