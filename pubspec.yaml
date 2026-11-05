@@ -21,6 +21,7 @@ dev_dependencies:
 flutter:
   assets:
     - assets/fonts/
+    - assets/icons/
   fonts:
     - family: Gliker
       fonts:

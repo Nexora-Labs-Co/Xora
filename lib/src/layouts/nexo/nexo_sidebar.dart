@@ -12,13 +12,15 @@ enum NexoSidebarState { expanded, collapsed }
 class NexoSidebarItem {
   const NexoSidebarItem({
     required this.label,
-    required this.icon,
+    this.icon,
+    this.imageAsset,
     this.onTap,
     this.selected = false,
-  });
+  }) : assert(icon != null || imageAsset != null);
 
   final String label;
-  final FaIconData icon;
+  final FaIconData? icon;
+  final String? imageAsset;
   final VoidCallback? onTap;
   final bool selected;
 }
@@ -198,7 +200,9 @@ class _TopTile extends StatelessWidget {
           borderRadius: BorderRadius.circular(8),
         ),
         child: Center(
-          child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+          child: item.imageAsset != null
+              ? ImageIcon(AssetImage(item.imageAsset!), size: 24, color: item.selected ? scheme.primary : null)
+              : XoraIcon(item.icon!, color: item.selected ? scheme.primary : null),
         ),
       ),
     );
@@ -220,13 +224,17 @@ class _SidebarTile extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: XoraSpacing.md),
           child: Center(
-            child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+            child: item.imageAsset != null
+                ? ImageIcon(AssetImage(item.imageAsset!), size: 20, color: item.selected ? scheme.primary : null)
+                : XoraIcon(item.icon!, color: item.selected ? scheme.primary : null),
           ),
         ),
       );
     }
     return ListTile(
-      leading: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+      leading: item.imageAsset != null
+          ? ImageIcon(AssetImage(item.imageAsset!), size: 24, color: item.selected ? scheme.primary : null)
+          : XoraIcon(item.icon!, color: item.selected ? scheme.primary : null),
       title: Text(item.label),
       selected: item.selected,
       onTap: item.onTap,
