@@ -6,7 +6,7 @@
 ## Commands
 - Package: `flutter pub get && flutter analyze && flutter test`
 - Example: `cd example && flutter pub get && flutter analyze && flutter test`
-- Run showcase: `cd example && flutter run -d chrome` (or `flutter build web`)
+- Run showcase: `cd example && flutter run -d chrome` (or `flutter build web --no-tree-shake-icons`)
 
 ## Structure
 - Barrel export: `lib/xora.dart`
