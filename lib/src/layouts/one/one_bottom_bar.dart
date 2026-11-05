@@ -5,10 +5,7 @@ import '../../theme/xora_radius.dart';
 import '../../theme/xora_spacing.dart';
 
 class OneBottomBarItem {
-  const OneBottomBarItem({
-    required this.icon,
-    this.label,
-  });
+  const OneBottomBarItem({required this.icon, this.label});
 
   final Widget icon;
   final String? label;
@@ -40,7 +37,7 @@ class OneBottomBar extends StatelessWidget {
               vertical: XoraSpacing.sm,
             ),
             decoration: BoxDecoration(
-              color: Colors.transparent,
+              color: scheme.surface,
               borderRadius: BorderRadius.circular(XoraRadius.full),
               border: Border.all(color: scheme.outline),
               boxShadow: const [
