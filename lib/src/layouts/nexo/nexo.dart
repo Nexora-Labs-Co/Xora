@@ -23,6 +23,8 @@ class XoraNexo extends StatefulWidget {
     this.rightWidth = 320,
     this.appVersion,
     this.bottomActions,
+    this.onToggleTheme,
+    this.isDark = false,
     this.toolbarTitle,
     this.toolbarActions = const [],
   });
@@ -40,6 +42,8 @@ class XoraNexo extends StatefulWidget {
   final double rightWidth;
   final String? appVersion;
   final List<Widget>? bottomActions;
+  final VoidCallback? onToggleTheme;
+  final bool isDark;
   final Widget? toolbarTitle;
   final List<Widget> toolbarActions;
 
@@ -120,6 +124,8 @@ class _XoraNexoState extends State<XoraNexo> {
           NexoBottomBar(
             appVersion: widget.appVersion,
             actions: widget.bottomActions,
+            onToggleTheme: widget.onToggleTheme,
+            isDark: widget.isDark,
           ),
       ],
     );
