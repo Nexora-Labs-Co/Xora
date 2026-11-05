@@ -59,7 +59,7 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
     return Scaffold(
       body: XoraResponsive(
         mobile: XoraOne(
-          topBar: const OneTopBar(title: Text('Xora')),
+          topBar: OneTopBar(appName: 'Xora', avatar: XoraAvatar(initials: 'U')),
           bottomBar: OneBottomBar(
             selectedIndex: _index,
             onTap: (i) => setState(() => _index = i),
@@ -487,3 +487,4 @@ class FeedbackPage extends StatelessWidget {
     );
   }
 }
+
