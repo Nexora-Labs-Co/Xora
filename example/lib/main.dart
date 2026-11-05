@@ -87,7 +87,8 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         tablet: XoraSlate(child: pages[_index]),
         desktop: XoraNexo(
           appName: 'Xora',
-          sidebarItems: [
+          sidebarEntries: [
+            const NexoSidebarSection('Principal'),
             NexoSidebarItem(
               label: 'Inicio',
               icon: XoraIcons.palette,
@@ -98,11 +99,13 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
               icon: XoraIcons.squaresFour,
               onTap: () => setState(() => _index = 1),
             ),
+            const NexoSidebarSection('Favoritos'),
             NexoSidebarItem(
               label: 'Componentes',
               icon: XoraIcons.notePencil,
               onTap: () => setState(() => _index = 2),
             ),
+            const NexoSidebarSection('iCloud'),
             NexoSidebarItem(
               label: 'Formularios',
               icon: XoraIcons.bell,
