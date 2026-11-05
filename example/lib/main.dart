@@ -111,6 +111,7 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
           ],
           userName: 'Usuario',
           userStatus: 'Premium',
+          userInitials: 'U',
           rightPanel: XoraCard(
             child: Text('Panel de contexto para la página ${_index + 1}'),
           ),
