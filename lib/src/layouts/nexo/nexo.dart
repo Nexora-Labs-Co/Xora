@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/xora_spacing.dart';
+import '../../theme/xora_spacing.dart';
 
 class XoraNexo extends StatelessWidget {
   const XoraNexo({super.key, required this.child});

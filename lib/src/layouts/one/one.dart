@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../theme/xora_spacing.dart';
+import '../../theme/xora_spacing.dart';
 
 class XoraOne extends StatelessWidget {
   const XoraOne({super.key, required this.child});
