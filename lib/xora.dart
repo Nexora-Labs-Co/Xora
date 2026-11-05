@@ -25,5 +25,6 @@ export 'src/layouts/one/one.dart';
 export 'src/layouts/slate/slate.dart';
 export 'src/layouts/nexo/nexo.dart';
 export 'src/layouts/nexo/nexo_sidebar.dart';
+export 'src/layouts/nexo/nexo_bottom_bar.dart';
 
 export 'src/icons/xora_icons.dart';

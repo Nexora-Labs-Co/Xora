@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../theme/xora_spacing.dart';
+import 'nexo_bottom_bar.dart';
 
 class XoraNexo extends StatelessWidget {
   const XoraNexo({
@@ -24,7 +24,6 @@ class XoraNexo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     final hasBottom = appVersion != null || bottomActions.isNotEmpty;
     return Column(
       children: [
@@ -42,22 +41,7 @@ class XoraNexo extends StatelessWidget {
           ),
         ),
         if (hasBottom)
-          Container(
-            height: 40,
-            padding: const EdgeInsets.symmetric(horizontal: XoraSpacing.lg),
-            decoration: BoxDecoration(
-              color: scheme.surface,
-              border: Border(top: BorderSide(color: scheme.outline)),
-            ),
-            child: Row(
-              children: [
-                if (appVersion != null)
-                  Text(appVersion!, style: Theme.of(context).textTheme.bodySmall),
-                const Spacer(),
-                ...bottomActions,
-              ],
-            ),
-          ),
+          NexoBottomBar(appVersion: appVersion, actions: bottomActions),
       ],
     );
   }
