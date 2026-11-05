@@ -153,8 +153,6 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             child: Text('Panel de contexto para la página ${_index + 1}'),
           ),
           appVersion: 'v0.1.0',
-          onToggleTheme: widget.onToggleTheme,
-          isDark: widget.dark,
           child: pages[_index],
         ),
       ),
