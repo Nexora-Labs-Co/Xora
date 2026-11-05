@@ -58,27 +58,32 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
       const FeedbackPage(),
     ];
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Xora UI Kit'),
-        actions: [
-          XoraIconButton(
-            icon: FaIcon(widget.dark ? FontAwesomeIcons.sun : FontAwesomeIcons.moon),
-            onPressed: widget.onToggleTheme,
-            tooltip: 'Toggle theme',
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
       body: XoraResponsive(
         mobile: XoraOne(child: pages[_index]),
         tablet: XoraSlate(child: pages[_index]),
         desktop: XoraNexo(
           leftSidebar: NexoSidebar(
-            items: const [
-              NexoSidebarItem(label: 'Foundations', icon: FontAwesomeIcons.palette),
-              NexoSidebarItem(label: 'Components', icon: FontAwesomeIcons.tableCells),
-              NexoSidebarItem(label: 'Forms', icon: FontAwesomeIcons.penToSquare),
-              NexoSidebarItem(label: 'Feedback', icon: FontAwesomeIcons.bell),
+            items: [
+              NexoSidebarItem(
+                label: 'Foundations',
+                icon: FontAwesomeIcons.palette,
+                onTap: () => setState(() => _index = 0),
+              ),
+              NexoSidebarItem(
+                label: 'Components',
+                icon: FontAwesomeIcons.tableCells,
+                onTap: () => setState(() => _index = 1),
+              ),
+              NexoSidebarItem(
+                label: 'Forms',
+                icon: FontAwesomeIcons.penToSquare,
+                onTap: () => setState(() => _index = 2),
+              ),
+              NexoSidebarItem(
+                label: 'Feedback',
+                icon: FontAwesomeIcons.bell,
+                onTap: () => setState(() => _index = 3),
+              ),
             ],
           ),
           rightPanel: XoraCard(
@@ -105,22 +110,16 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
           child: pages[_index],
         ),
       ),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: (i) => setState(() => _index = i),
-        destinations: [
-          NavigationDestination(icon: FaIcon(FontAwesomeIcons.palette), label: 'Foundations'),
-          NavigationDestination(icon: FaIcon(FontAwesomeIcons.tableCells), label: 'Components'),
-          NavigationDestination(icon: FaIcon(FontAwesomeIcons.penToSquare), label: 'Forms'),
-          NavigationDestination(icon: FaIcon(FontAwesomeIcons.bell), label: 'Feedback'),
-        ],
-      ),
     );
   }
 }
 
 class FoundationsPage extends StatelessWidget {
-  const FoundationsPage({super.key, required this.onToggleTheme, required this.dark});
+  const FoundationsPage({
+    super.key,
+    required this.onToggleTheme,
+    required this.dark,
+  });
 
   final VoidCallback onToggleTheme;
   final bool dark;
@@ -149,14 +148,38 @@ class FoundationsPage extends StatelessWidget {
         const SizedBox(height: 24),
         Text('Typography', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
-        Text('Display', style: XoraTypography.display.copyWith(color: scheme.onSurface)),
-        Text('Headline', style: XoraTypography.headline.copyWith(color: scheme.onSurface)),
-        Text('Title', style: XoraTypography.title.copyWith(color: scheme.onSurface)),
-        Text('Subtitle', style: XoraTypography.subtitle.copyWith(color: scheme.onSurface)),
-        Text('Body', style: XoraTypography.body.copyWith(color: scheme.onSurface)),
-        Text('Body small', style: XoraTypography.bodySmall.copyWith(color: scheme.onSurface)),
-        Text('Label', style: XoraTypography.label.copyWith(color: scheme.onSurface)),
-        Text('Caption', style: XoraTypography.caption.copyWith(color: scheme.onSurface)),
+        Text(
+          'Display',
+          style: XoraTypography.display.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Headline',
+          style: XoraTypography.headline.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Title',
+          style: XoraTypography.title.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Subtitle',
+          style: XoraTypography.subtitle.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Body',
+          style: XoraTypography.body.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Body small',
+          style: XoraTypography.bodySmall.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Label',
+          style: XoraTypography.label.copyWith(color: scheme.onSurface),
+        ),
+        Text(
+          'Caption',
+          style: XoraTypography.caption.copyWith(color: scheme.onSurface),
+        ),
         const SizedBox(height: 24),
         Text('Spacing & radius', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
@@ -215,7 +238,10 @@ class ComponentsPage extends StatelessWidget {
           runSpacing: 8,
           children: const [
             XoraButton(label: 'Primary'),
-            XoraButton(label: 'Secondary', variant: XoraButtonVariant.secondary),
+            XoraButton(
+              label: 'Secondary',
+              variant: XoraButtonVariant.secondary,
+            ),
             XoraButton(label: 'Outline', variant: XoraButtonVariant.outline),
             XoraButton(label: 'Ghost', variant: XoraButtonVariant.ghost),
             XoraButton(label: 'Danger', variant: XoraButtonVariant.danger),
@@ -226,7 +252,10 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         const XoraButton(label: 'Loading', loading: true),
         const SizedBox(height: 8),
-        XoraButton(label: "With icon", icon: FaIcon(FontAwesomeIcons.plus, size: 16, color: Colors.white)),
+        XoraButton(
+          label: "With icon",
+          icon: FaIcon(FontAwesomeIcons.plus, size: 16, color: Colors.white),
+        ),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
@@ -308,11 +337,7 @@ class _FormsPageState extends State<FormsPage> {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        XoraTextField(
-          controller: _name,
-          label: 'Name',
-          hint: 'Your full name',
-        ),
+        XoraTextField(controller: _name, label: 'Name', hint: 'Your full name'),
         const SizedBox(height: 16),
         XoraTextField(
           controller: _email,
@@ -347,7 +372,11 @@ class _FormsPageState extends State<FormsPage> {
               _emailError = _email.text.contains('@') ? null : 'Invalid email';
             });
             if (_emailError == null) {
-              XoraSnackbar.show(context, message: 'Submitted successfully', type: XoraSnackbarType.success);
+              XoraSnackbar.show(
+                context,
+                message: 'Submitted successfully',
+                type: XoraSnackbarType.success,
+              );
             }
           },
         ),
@@ -366,13 +395,21 @@ class FeedbackPage extends StatelessWidget {
       children: [
         XoraButton(
           label: 'Show success',
-          onPressed: () => XoraSnackbar.show(context, message: 'Operation completed', type: XoraSnackbarType.success),
+          onPressed: () => XoraSnackbar.show(
+            context,
+            message: 'Operation completed',
+            type: XoraSnackbarType.success,
+          ),
         ),
         const SizedBox(height: 8),
         XoraButton(
           label: 'Show error',
           variant: XoraButtonVariant.danger,
-          onPressed: () => XoraSnackbar.show(context, message: 'Something went wrong', type: XoraSnackbarType.error),
+          onPressed: () => XoraSnackbar.show(
+            context,
+            message: 'Something went wrong',
+            type: XoraSnackbarType.error,
+          ),
         ),
         const SizedBox(height: 24),
         XoraEmptyState(
@@ -388,11 +425,13 @@ class FeedbackPage extends StatelessWidget {
             icon: FaIcon(FontAwesomeIcons.magnifyingGlassMinus),
             title: 'No results',
             subtitle: 'Try adjusting your search filters.',
-            action: XoraButton(label: 'Clear filters', variant: XoraButtonVariant.outline),
+            action: XoraButton(
+              label: 'Clear filters',
+              variant: XoraButtonVariant.outline,
+            ),
           ),
         ),
       ],
     );
   }
 }
-
