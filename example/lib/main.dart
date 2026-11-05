@@ -227,7 +227,10 @@ class FoundationsPage extends StatelessWidget {
           style: XoraTypography.caption.copyWith(color: scheme.onSurface),
         ),
         const SizedBox(height: 24),
-        Text('Espaciado y radios', style: Theme.of(context).textTheme.titleLarge),
+        Text(
+          'Espaciado y radios',
+          style: Theme.of(context).textTheme.titleLarge,
+        ),
         const SizedBox(height: 12),
         XoraCard(
           child: Column(
@@ -380,7 +383,11 @@ class _FormsPageState extends State<FormsPage> {
     return ListView(
       padding: const EdgeInsets.all(16),
       children: [
-        XoraTextField(controller: _name, label: 'Nombre', hint: 'Your full name'),
+        XoraTextField(
+          controller: _name,
+          label: 'Nombre',
+          hint: 'Your full name',
+        ),
         const SizedBox(height: 16),
         XoraTextField(
           controller: _email,
@@ -412,7 +419,9 @@ class _FormsPageState extends State<FormsPage> {
           fullWidth: true,
           onPressed: () {
             setState(() {
-              _emailError = _email.text.contains('@') ? null : 'Correo inválido';
+              _emailError = _email.text.contains('@')
+                  ? null
+                  : 'Correo inválido';
             });
             if (_emailError == null) {
               XoraSnackbar.show(
