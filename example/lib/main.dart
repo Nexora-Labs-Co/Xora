@@ -84,6 +84,24 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
           rightPanel: XoraCard(
             child: Text('Context panel for page ${_index + 1}'),
           ),
+          appVersion: 'v0.1.0',
+          bottomActions: [
+            IconButton(
+              onPressed: () {},
+              icon: const FaIcon(FontAwesomeIcons.github),
+              tooltip: 'GitHub',
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const FaIcon(FontAwesomeIcons.mugHot),
+              tooltip: 'Ko-fi',
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const FaIcon(FontAwesomeIcons.gear),
+              tooltip: 'Settings',
+            ),
+          ],
           child: pages[_index],
         ),
       ),
