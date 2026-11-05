@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:xora/xora.dart';
 
 void main() {
@@ -61,7 +62,7 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         title: const Text('Xora UI Kit'),
         actions: [
           XoraIconButton(
-            icon: Icon(widget.dark ? XoraIcons.sun : XoraIcons.moon),
+            icon: FaIcon(widget.dark ? XoraIcons.sun : XoraIcons.moon),
             onPressed: widget.onToggleTheme,
             tooltip: 'Toggle theme',
           ),
@@ -77,10 +78,10 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         selectedIndex: _index,
         onDestinationSelected: (i) => setState(() => _index = i),
         destinations: [
-          NavigationDestination(icon: Icon(XoraIcons.palette), label: 'Foundations'),
-          NavigationDestination(icon: Icon(XoraIcons.squaresFour), label: 'Components'),
-          NavigationDestination(icon: Icon(XoraIcons.notePencil), label: 'Forms'),
-          NavigationDestination(icon: Icon(XoraIcons.bell), label: 'Feedback'),
+          NavigationDestination(icon: FaIcon(XoraIcons.palette), label: 'Foundations'),
+          NavigationDestination(icon: FaIcon(XoraIcons.squaresFour), label: 'Components'),
+          NavigationDestination(icon: FaIcon(XoraIcons.notePencil), label: 'Forms'),
+          NavigationDestination(icon: FaIcon(XoraIcons.bell), label: 'Feedback'),
         ],
       ),
     );
@@ -194,7 +195,7 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         const XoraButton(label: 'Loading', loading: true),
         const SizedBox(height: 8),
-        XoraButton(label: "With icon", icon: Icon(XoraIcons.plus, size: 16, color: Colors.white)),
+        XoraButton(label: "With icon", icon: FaIcon(XoraIcons.plus, size: 16, color: Colors.white)),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
@@ -233,14 +234,14 @@ class ComponentsPage extends StatelessWidget {
                 leading: XoraAvatar(initials: 'JD'),
                 title: Text('Jane Doe'),
                 subtitle: Text('Product Designer'),
-                trailing: Icon(XoraIcons.caretRight),
+                trailing: FaIcon(XoraIcons.caretRight),
               ),
               XoraDivider(indent: 72),
               XoraListTile(
                 leading: XoraAvatar(initials: 'MK'),
                 title: Text('Mark Kent'),
                 subtitle: Text('Engineer'),
-                trailing: Icon(XoraIcons.caretRight),
+                trailing: FaIcon(XoraIcons.caretRight),
               ),
             ],
           ),
@@ -288,7 +289,7 @@ class _FormsPageState extends State<FormsPage> {
           hint: 'you@nexora.dev',
           keyboardType: TextInputType.emailAddress,
           errorText: _emailError,
-          prefixIcon: Icon(XoraIcons.envelopeSimple),
+          prefixIcon: FaIcon(XoraIcons.envelopeSimple),
         ),
         const SizedBox(height: 16),
         XoraSwitch(
@@ -344,7 +345,7 @@ class FeedbackPage extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         XoraEmptyState(
-          icon: Icon(XoraIcons.tray),
+          icon: FaIcon(XoraIcons.tray),
           title: 'No items yet',
           subtitle: 'Create your first item to get started.',
         ),
@@ -353,7 +354,7 @@ class FeedbackPage extends StatelessWidget {
         const SizedBox(height: 24),
         XoraCard(
           child: XoraEmptyState(
-            icon: Icon(XoraIcons.magnifyingGlassMinus),
+            icon: FaIcon(XoraIcons.magnifyingGlassMinus),
             title: 'No results',
             subtitle: 'Try adjusting your search filters.',
             action: XoraButton(label: 'Clear filters', variant: XoraButtonVariant.outline),
