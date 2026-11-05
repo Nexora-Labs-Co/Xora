@@ -81,6 +81,7 @@ class _XoraNexoState extends State<XoraNexo> {
               Expanded(
                 child: NexoCanvas(
                   toolbar: NexoToolbar(
+                    height: _sidebarState == NexoSidebarState.collapsed ? 58 : 62,
                     leading: IconButton(
                       onPressed: _toggleSidebar,
                       icon: XoraIcon(
