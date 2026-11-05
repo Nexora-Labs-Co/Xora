@@ -86,33 +86,31 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         ),
         tablet: XoraSlate(child: pages[_index]),
         desktop: XoraNexo(
-          leftSidebar: NexoSidebar(
-            appName: 'Xora',
-            items: [
-              NexoSidebarItem(
-                label: 'Inicio',
-                icon: XoraIcons.palette,
-                onTap: () => setState(() => _index = 0),
-              ),
-              NexoSidebarItem(
-                label: 'Fundamentos',
-                icon: XoraIcons.squaresFour,
-                onTap: () => setState(() => _index = 1),
-              ),
-              NexoSidebarItem(
-                label: 'Componentes',
-                icon: XoraIcons.notePencil,
-                onTap: () => setState(() => _index = 2),
-              ),
-              NexoSidebarItem(
-                label: 'Formularios',
-                icon: XoraIcons.bell,
-                onTap: () => setState(() => _index = 3),
-              ),
-            ],
-            userName: 'Usuario',
-            userStatus: 'Premium',
-          ),
+          appName: 'Xora',
+          sidebarItems: [
+            NexoSidebarItem(
+              label: 'Inicio',
+              icon: XoraIcons.palette,
+              onTap: () => setState(() => _index = 0),
+            ),
+            NexoSidebarItem(
+              label: 'Fundamentos',
+              icon: XoraIcons.squaresFour,
+              onTap: () => setState(() => _index = 1),
+            ),
+            NexoSidebarItem(
+              label: 'Componentes',
+              icon: XoraIcons.notePencil,
+              onTap: () => setState(() => _index = 2),
+            ),
+            NexoSidebarItem(
+              label: 'Formularios',
+              icon: XoraIcons.bell,
+              onTap: () => setState(() => _index = 3),
+            ),
+          ],
+          userName: 'Usuario',
+          userStatus: 'Premium',
           rightPanel: XoraCard(
             child: Text('Panel de contexto para la página ${_index + 1}'),
           ),
