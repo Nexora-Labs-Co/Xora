@@ -87,29 +87,61 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
         tablet: XoraSlate(child: pages[_index]),
         desktop: XoraNexo(
           appName: 'Xora',
-          sidebarEntries: [
-            const NexoSidebarSection('Principal'),
-            NexoSidebarItem(
-              label: 'Inicio',
-              icon: XoraIcons.palette,
-              onTap: () => setState(() => _index = 0),
+          sidebarSections: [
+            NexoSidebarSection(
+              title: 'Menú',
+              items: [
+                NexoSidebarItem(
+                  label: 'Inicio',
+                  icon: XoraIcons.palette,
+                  onTap: () => setState(() => _index = 0),
+                ),
+                NexoSidebarItem(
+                  label: 'Fundamentos',
+                  icon: XoraIcons.squaresFour,
+                  onTap: () => setState(() => _index = 1),
+                ),
+                NexoSidebarItem(
+                  label: 'Componentes',
+                  icon: XoraIcons.notePencil,
+                  onTap: () => setState(() => _index = 2),
+                ),
+                NexoSidebarItem(
+                  label: 'Formularios',
+                  icon: XoraIcons.bell,
+                  onTap: () => setState(() => _index = 3),
+                ),
+              ],
             ),
-            NexoSidebarItem(
-              label: 'Fundamentos',
-              icon: XoraIcons.squaresFour,
-              onTap: () => setState(() => _index = 1),
+            NexoSidebarSection(
+              title: 'Favoritos',
+              items: [
+                NexoSidebarItem(
+                  label: 'Colores',
+                  icon: XoraIcons.palette,
+                  onTap: () => setState(() => _index = 0),
+                ),
+                NexoSidebarItem(
+                  label: 'Tipografía',
+                  icon: XoraIcons.notePencil,
+                  onTap: () => setState(() => _index = 1),
+                ),
+              ],
             ),
-            const NexoSidebarSection('Favoritos'),
-            NexoSidebarItem(
-              label: 'Componentes',
-              icon: XoraIcons.notePencil,
-              onTap: () => setState(() => _index = 2),
-            ),
-            const NexoSidebarSection('iCloud'),
-            NexoSidebarItem(
-              label: 'Formularios',
-              icon: XoraIcons.bell,
-              onTap: () => setState(() => _index = 3),
+            NexoSidebarSection(
+              title: 'Etiquetas',
+              items: [
+                NexoSidebarItem(
+                  label: 'Primario',
+                  icon: XoraIcons.squaresFour,
+                  onTap: () => setState(() => _index = 2),
+                ),
+                NexoSidebarItem(
+                  label: 'Secundario',
+                  icon: XoraIcons.bell,
+                  onTap: () => setState(() => _index = 3),
+                ),
+              ],
             ),
           ],
           userName: 'Usuario',
