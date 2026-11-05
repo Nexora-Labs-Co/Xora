@@ -6,7 +6,7 @@ void main() {
   testWidgets('showcase builds', (WidgetTester tester) async {
     await tester.pumpWidget(const XoraShowcaseApp());
     await tester.pumpAndSettle();
-    expect(find.text('Colors'), findsOneWidget);
+    expect(find.text('Colores'), findsOneWidget);
   });
 }
 
