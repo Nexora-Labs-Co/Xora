@@ -26,6 +26,8 @@ export 'src/layouts/one/one_top_bar.dart';
 export 'src/layouts/one/one_bottom_bar.dart';
 export 'src/layouts/slate/slate.dart';
 export 'src/layouts/nexo/nexo.dart';
+export 'src/layouts/nexo/nexo_canvas.dart';
+export 'src/layouts/nexo/nexo_toolbar.dart';
 export 'src/layouts/nexo/nexo_sidebar.dart';
 export 'src/layouts/nexo/nexo_bottom_bar.dart';
 

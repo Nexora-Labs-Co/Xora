@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../components/data_display/xora_avatar.dart';
 import '../../icons/xora_icon.dart';
-import '../../icons/xora_icons.dart';
 import '../../theme/xora_colors.dart';
 import '../../theme/xora_spacing.dart';
 import '../../theme/xora_typography.dart';
@@ -23,7 +23,7 @@ class NexoSidebarItem {
   final bool selected;
 }
 
-class NexoSidebar extends StatefulWidget {
+class NexoSidebar extends StatelessWidget {
   const NexoSidebar({
     super.key,
     this.appName,
@@ -33,6 +33,7 @@ class NexoSidebar extends StatefulWidget {
     this.userName,
     this.userStatus,
     this.userAvatar,
+    this.userInitials,
   });
 
   final String? appName;
@@ -42,26 +43,10 @@ class NexoSidebar extends StatefulWidget {
   final String? userName;
   final String? userStatus;
   final Widget? userAvatar;
+  final String? userInitials;
 
-  @override
-  State<NexoSidebar> createState() => _NexoSidebarState();
-}
-
-class _NexoSidebarState extends State<NexoSidebar> {
-  late NexoSidebarState _state = widget.state;
-
-  void _cycle() {
-    final next = switch (_state) {
-      NexoSidebarState.expanded => NexoSidebarState.collapsed,
-      NexoSidebarState.collapsed => NexoSidebarState.grid,
-      NexoSidebarState.grid => NexoSidebarState.expanded,
-    };
-    setState(() => _state = next);
-    widget.onStateChanged?.call(next);
-  }
-
-  bool get _expanded => _state == NexoSidebarState.expanded;
-  bool get _grid => _state == NexoSidebarState.grid;
+  bool get _expanded => state == NexoSidebarState.expanded;
+  bool get _grid => state == NexoSidebarState.grid;
 
   @override
   Widget build(BuildContext context) {
@@ -70,28 +55,17 @@ class _NexoSidebarState extends State<NexoSidebar> {
       color: scheme.surface,
       child: Column(
         children: [
-          if (_expanded && widget.appName != null)
+          if (_expanded && appName != null)
             Padding(
               padding: const EdgeInsets.all(XoraSpacing.lg),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  widget.appName!,
-                  style: XoraTypography.title.copyWith(color: scheme.onSurface),
+                  appName!,
+                  style: XoraTypography.logo(22).copyWith(color: scheme.onSurface),
                 ),
               ),
             ),
-          IconButton(
-            onPressed: _cycle,
-            icon: XoraIcon(
-              _state == NexoSidebarState.expanded
-                  ? XoraIcons.anglesLeft
-                  : _state == NexoSidebarState.collapsed
-                      ? XoraIcons.anglesRight
-                      : XoraIcons.grip,
-            ),
-            tooltip: 'Cambiar barra lateral',
-          ),
           const Divider(height: 1),
           Expanded(
             child: _grid
@@ -99,35 +73,35 @@ class _NexoSidebarState extends State<NexoSidebar> {
                     crossAxisCount: 3,
                     padding: const EdgeInsets.all(XoraSpacing.sm),
                     children: [
-                      for (final item in widget.items) _GridTile(item: item),
+                      for (final item in items) _GridTile(item: item),
                     ],
                   )
                 : ListView(
                     children: [
-                      for (final item in widget.items)
+                      for (final item in items)
                         _SidebarTile(item: item, collapsed: !_expanded),
                     ],
                   ),
           ),
-          if (widget.userName != null) ...[
+          if (userName != null) ...[
             const Divider(height: 1),
             Padding(
               padding: const EdgeInsets.all(XoraSpacing.md),
               child: _expanded
                   ? Row(
                       children: [
-                        widget.userAvatar ??
-                            XoraIcon(XoraIcons.user, size: 32),
+                        userAvatar ??
+                            XoraAvatar(initials: userInitials ?? ''),
                         const SizedBox(width: XoraSpacing.md),
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(widget.userName!,
+                              Text(userName!,
                                   style: XoraTypography.subtitle
                                       .copyWith(color: scheme.onSurface)),
-                              if (widget.userStatus != null)
-                                Text(widget.userStatus!,
+                              if (userStatus != null)
+                                Text(userStatus!,
                                     style: XoraTypography.caption
                                         .copyWith(color: XoraColors.textSecondary)),
                             ],
@@ -136,8 +110,8 @@ class _NexoSidebarState extends State<NexoSidebar> {
                       ],
                     )
                   : Center(
-                      child: widget.userAvatar ??
-                          XoraIcon(XoraIcons.user, size: 24),
+                      child: userAvatar ??
+                          XoraAvatar(initials: userInitials ?? '', size: 24),
                     ),
             ),
           ],
