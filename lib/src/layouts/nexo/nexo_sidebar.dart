@@ -37,6 +37,7 @@ class NexoSidebar extends StatelessWidget {
   const NexoSidebar({
     super.key,
     this.appName,
+    this.topItems = const [],
     this.sections = const [],
     this.items = const [],
     this.state = NexoSidebarState.expanded,
@@ -48,6 +49,7 @@ class NexoSidebar extends StatelessWidget {
   });
 
   final String? appName;
+  final List<NexoSidebarItem> topItems;
   final List<NexoSidebarSection> sections;
   final List<NexoSidebarItem> items;
   final NexoSidebarState state;
@@ -68,6 +70,12 @@ class NexoSidebar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final displaySections = _expanded
+        ? _sections
+        : [
+            if (topItems.isNotEmpty) NexoSidebarSection(items: topItems),
+            ..._sections,
+          ];
     return Material(
       color: scheme.surface,
       child: Column(
@@ -87,12 +95,27 @@ class NexoSidebar extends StatelessWidget {
               ),
             ),
           const Divider(height: 1),
+          if (_expanded && topItems.isNotEmpty)
+            Padding(
+              padding: const EdgeInsets.all(XoraSpacing.md),
+              child: GridView.count(
+                crossAxisCount: 2,
+                mainAxisSpacing: XoraSpacing.sm,
+                crossAxisSpacing: XoraSpacing.sm,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                childAspectRatio: 1.0,
+                children: [
+                  for (final item in topItems) _TopTile(item: item),
+                ],
+              ),
+            ),
           Expanded(
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: XoraSpacing.sm),
               children: [
-                for (int i = 0; i < _sections.length; i++) ...[
-                  if (_expanded && _sections[i].title != null)
+                for (int i = 0; i < displaySections.length; i++) ...[
+                  if (_expanded && displaySections[i].title != null)
                     Padding(
                       padding: const EdgeInsets.fromLTRB(
                         XoraSpacing.lg,
@@ -101,16 +124,16 @@ class NexoSidebar extends StatelessWidget {
                         XoraSpacing.xs,
                       ),
                       child: Text(
-                        _sections[i].title!,
+                        displaySections[i].title!,
                         style: XoraTypography.caption.copyWith(
                           color: XoraColors.textSecondary,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
-                  for (final item in _sections[i].items)
+                  for (final item in displaySections[i].items)
                     _SidebarTile(item: item, collapsed: !_expanded),
-                  if (!_expanded && i < _sections.length - 1)
+                  if (!_expanded && i < displaySections.length - 1)
                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: XoraSpacing.sm),
                       child: Divider(height: 1, indent: 8, endIndent: 8),
@@ -152,6 +175,31 @@ class NexoSidebar extends StatelessWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+}
+
+class _TopTile extends StatelessWidget {
+  const _TopTile({required this.item});
+
+  final NexoSidebarItem item;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return InkWell(
+      onTap: item.onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Container(
+        decoration: BoxDecoration(
+          color: scheme.surface,
+          border: Border.all(color: XoraColors.border),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Center(
+          child: XoraIcon(item.icon, color: item.selected ? scheme.primary : null),
+        ),
       ),
     );
   }

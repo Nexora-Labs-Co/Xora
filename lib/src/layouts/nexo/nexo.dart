@@ -11,7 +11,9 @@ class XoraNexo extends StatefulWidget {
   const XoraNexo({
     super.key,
     required this.child,
+    this.leftSidebar,
     this.sidebarItems = const [],
+    this.topItems = const [],
     this.sidebarSections = const [],
     this.appName,
     this.userName,
@@ -30,7 +32,9 @@ class XoraNexo extends StatefulWidget {
   });
 
   final Widget child;
+  final Widget? leftSidebar;
   final List<NexoSidebarItem> sidebarItems;
+  final List<NexoSidebarItem> topItems;
   final List<NexoSidebarSection> sidebarSections;
   final String? appName;
   final String? userName;
@@ -72,26 +76,29 @@ class _XoraNexoState extends State<XoraNexo> {
         Expanded(
           child: Row(
             children: [
-              SizedBox(
-                width: _sidebarState == NexoSidebarState.collapsed
-                    ? 72
-                    : widget.leftWidth,
-                child: NexoSidebar(
-                  appName: widget.appName,
-                  sections: widget.sidebarSections.isNotEmpty
-                      ? widget.sidebarSections
-                      : (widget.sidebarItems.isNotEmpty
+              if (widget.leftSidebar != null)
+                SizedBox(width: widget.leftWidth, child: widget.leftSidebar)
+              else
+                SizedBox(
+                  width: _sidebarState == NexoSidebarState.collapsed
+                      ? 72
+                      : widget.leftWidth,
+                  child: NexoSidebar(
+                    appName: widget.appName,
+                    sections: widget.sidebarSections.isNotEmpty
+                        ? widget.sidebarSections
+                        : (widget.sidebarItems.isNotEmpty
                             ? [NexoSidebarSection(items: widget.sidebarItems)]
                             : const []),
-                  items: const [],
-                  state: _sidebarState,
-                  onStateChanged: (s) => setState(() => _sidebarState = s),
-                  userName: widget.userName,
-                  userStatus: widget.userStatus,
-                  userAvatar: widget.userAvatar,
-                  userInitials: widget.userInitials,
+                    items: const [],
+                    state: _sidebarState,
+                    onStateChanged: (s) => setState(() => _sidebarState = s),
+                    userName: widget.userName,
+                    userStatus: widget.userStatus,
+                    userAvatar: widget.userAvatar,
+                    userInitials: widget.userInitials,
+                  ),
                 ),
-              ),
               const VerticalDivider(width: 1),
               Expanded(
                 child: NexoCanvas(
@@ -131,3 +138,4 @@ class _XoraNexoState extends State<XoraNexo> {
     );
   }
 }
+
