@@ -73,7 +73,7 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                 if (appName != null)
                   Text(
                     appName!,
-                    style: XoraTypography.logo(28).copyWith(color: scheme.onSurface),
+                    style: XoraTypography.logo(28).copyWith(color: backgroundColor != null ? Colors.white : scheme.onSurface),
                   ),
                 if (leading != null) ...[
                   leading!,
@@ -81,7 +81,14 @@ class OneTopBar extends StatelessWidget implements PreferredSizeWidget {
                 ],
                 if (title != null) ...[
                   const SizedBox(width: XoraSpacing.md),
-                  Expanded(child: Center(child: title!)),
+                  Expanded(
+                    child: Center(
+                      child: DefaultTextStyle(
+                        style: TextStyle(color: backgroundColor != null ? Colors.white : scheme.onSurface),
+                        child: title!,
+                      ),
+                    ),
+                  ),
                 ] else
                   const Spacer(),
                 ...actions,

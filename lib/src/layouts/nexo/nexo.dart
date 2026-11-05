@@ -26,6 +26,7 @@ class XoraNexo extends StatefulWidget {
     this.appVersion,
     this.bottomActions,
     this.toolbarTitle,
+    this.toolbarBackgroundColor,
     this.toolbarActions = const [],
   });
 
@@ -45,6 +46,7 @@ class XoraNexo extends StatefulWidget {
   final String? appVersion;
   final List<Widget>? bottomActions;
   final Widget? toolbarTitle;
+  final Color? toolbarBackgroundColor;
   final List<Widget> toolbarActions;
 
   @override
@@ -102,6 +104,7 @@ class _XoraNexoState extends State<XoraNexo> {
                     height: _sidebarState == NexoSidebarState.collapsed
                         ? 58
                         : 63,
+                    backgroundColor: widget.toolbarBackgroundColor,
                     leading: IconButton(
                       onPressed: _toggleSidebar,
                       icon: XoraIcon(
