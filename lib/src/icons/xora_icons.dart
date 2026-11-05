@@ -21,6 +21,7 @@ class XoraIcons {
   static const FaIconData anglesLeft = FontAwesomeIcons.anglesLeft;
   static const FaIconData anglesRight = FontAwesomeIcons.anglesRight;
   static const FaIconData grip = FontAwesomeIcons.grip;
+  static const FaIconData panelRight = FontAwesomeIcons.bars;
   static const FaIconData user = FontAwesomeIcons.user;
 }
 

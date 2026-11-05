@@ -9,7 +9,11 @@ import '../../theme/xora_typography.dart';
 
 enum NexoSidebarState { expanded, collapsed }
 
-class NexoSidebarItem {
+sealed class NexoSidebarEntry {
+  const NexoSidebarEntry();
+}
+
+class NexoSidebarItem extends NexoSidebarEntry {
   const NexoSidebarItem({
     required this.label,
     required this.icon,
@@ -23,11 +27,17 @@ class NexoSidebarItem {
   final bool selected;
 }
 
+class NexoSidebarSection extends NexoSidebarEntry {
+  const NexoSidebarSection(this.title);
+
+  final String title;
+}
+
 class NexoSidebar extends StatelessWidget {
   const NexoSidebar({
     super.key,
     this.appName,
-    required this.items,
+    required this.entries,
     this.state = NexoSidebarState.expanded,
     this.onStateChanged,
     this.userName,
@@ -37,7 +47,7 @@ class NexoSidebar extends StatelessWidget {
   });
 
   final String? appName;
-  final List<NexoSidebarItem> items;
+  final List<NexoSidebarEntry> entries;
   final NexoSidebarState state;
   final ValueChanged<NexoSidebarState>? onStateChanged;
   final String? userName;
@@ -71,9 +81,13 @@ class NexoSidebar extends StatelessWidget {
           const Divider(height: 1),
           Expanded(
             child: ListView(
+              padding: const EdgeInsets.symmetric(vertical: XoraSpacing.sm),
               children: [
-                for (final item in items)
-                  _SidebarTile(item: item, collapsed: !_expanded),
+                for (final entry in entries)
+                  if (entry is NexoSidebarSection)
+                    _SectionTitle(title: entry.title, expanded: _expanded)
+                  else if (entry is NexoSidebarItem)
+                    _SidebarTile(item: entry, collapsed: !_expanded),
               ],
             ),
           ),
@@ -115,6 +129,33 @@ class NexoSidebar extends StatelessWidget {
   }
 }
 
+class _SectionTitle extends StatelessWidget {
+  const _SectionTitle({required this.title, required this.expanded});
+
+  final String title;
+  final bool expanded;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!expanded) return const SizedBox.shrink();
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(
+        XoraSpacing.lg,
+        XoraSpacing.md,
+        XoraSpacing.lg,
+        XoraSpacing.xs,
+      ),
+      child: Text(
+        title.toUpperCase(),
+        style: XoraTypography.label.copyWith(
+          color: XoraColors.textSecondary,
+          fontSize: 11,
+        ),
+      ),
+    );
+  }
+}
+
 class _SidebarTile extends StatelessWidget {
   const _SidebarTile({required this.item, required this.collapsed});
 
@@ -141,6 +182,7 @@ class _SidebarTile extends StatelessWidget {
       selected: item.selected,
       onTap: item.onTap,
       dense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: XoraSpacing.lg),
     );
   }
 }
