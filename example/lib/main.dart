@@ -259,10 +259,7 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         const XoraButton(label: 'Loading', loading: true),
         const SizedBox(height: 8),
-        XoraButton(
-          label: "With icon",
-          icon: XoraIcon(XoraIcons.plus),
-        ),
+        XoraButton(label: "With icon", icon: XoraIcon(XoraIcons.plus)),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
         const SizedBox(height: 12),
