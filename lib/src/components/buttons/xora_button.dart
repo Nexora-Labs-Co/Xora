@@ -64,6 +64,12 @@ class XoraButton extends StatelessWidget {
       XoraButtonVariant.danger => (XoraColors.danger, XoraColors.onPrimary, Colors.transparent),
     };
 
+    final iconSize = switch (size) {
+      XoraButtonSize.sm => 14.0,
+      XoraButtonSize.md => 16.0,
+      XoraButtonSize.lg => 18.0,
+    };
+
     final child = loading
         ? SizedBox(
             width: 16,
@@ -78,7 +84,10 @@ class XoraButton extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (icon != null) ...[
-                icon!,
+                IconTheme(
+                  data: IconThemeData(color: fg, size: iconSize),
+                  child: icon!,
+                ),
                 const SizedBox(width: XoraSpacing.sm),
               ],
               Text(label, style: textStyle.copyWith(color: fg)),
