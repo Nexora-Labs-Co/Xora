@@ -9,11 +9,7 @@ import '../../theme/xora_typography.dart';
 
 enum NexoSidebarState { expanded, collapsed }
 
-sealed class NexoSidebarEntry {
-  const NexoSidebarEntry();
-}
-
-class NexoSidebarItem extends NexoSidebarEntry {
+class NexoSidebarItem {
   const NexoSidebarItem({
     required this.label,
     required this.icon,
@@ -27,17 +23,22 @@ class NexoSidebarItem extends NexoSidebarEntry {
   final bool selected;
 }
 
-class NexoSidebarSection extends NexoSidebarEntry {
-  const NexoSidebarSection(this.title);
+class NexoSidebarSection {
+  const NexoSidebarSection({
+    this.title,
+    required this.items,
+  });
 
-  final String title;
+  final String? title;
+  final List<NexoSidebarItem> items;
 }
 
 class NexoSidebar extends StatelessWidget {
   const NexoSidebar({
     super.key,
     this.appName,
-    required this.entries,
+    this.sections = const [],
+    this.items = const [],
     this.state = NexoSidebarState.expanded,
     this.onStateChanged,
     this.userName,
@@ -47,7 +48,8 @@ class NexoSidebar extends StatelessWidget {
   });
 
   final String? appName;
-  final List<NexoSidebarEntry> entries;
+  final List<NexoSidebarSection> sections;
+  final List<NexoSidebarItem> items;
   final NexoSidebarState state;
   final ValueChanged<NexoSidebarState>? onStateChanged;
   final String? userName;
@@ -56,6 +58,12 @@ class NexoSidebar extends StatelessWidget {
   final String? userInitials;
 
   bool get _expanded => state == NexoSidebarState.expanded;
+
+  List<NexoSidebarSection> get _sections {
+    if (sections.isNotEmpty) return sections;
+    if (items.isNotEmpty) return [NexoSidebarSection(items: items)];
+    return const [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -83,11 +91,26 @@ class NexoSidebar extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(vertical: XoraSpacing.sm),
               children: [
-                for (final entry in entries)
-                  if (entry is NexoSidebarSection)
-                    _SectionTitle(title: entry.title, expanded: _expanded)
-                  else if (entry is NexoSidebarItem)
-                    _SidebarTile(item: entry, collapsed: !_expanded),
+                for (final section in _sections) ...[
+                  if (_expanded && section.title != null)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        XoraSpacing.lg,
+                        XoraSpacing.md,
+                        XoraSpacing.lg,
+                        XoraSpacing.xs,
+                      ),
+                      child: Text(
+                        section.title!,
+                        style: XoraTypography.caption.copyWith(
+                          color: XoraColors.textSecondary,
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
+                    ),
+                  for (final item in section.items)
+                    _SidebarTile(item: item, collapsed: !_expanded),
+                ],
               ],
             ),
           ),
@@ -124,33 +147,6 @@ class NexoSidebar extends StatelessWidget {
             ),
           ],
         ],
-      ),
-    );
-  }
-}
-
-class _SectionTitle extends StatelessWidget {
-  const _SectionTitle({required this.title, required this.expanded});
-
-  final String title;
-  final bool expanded;
-
-  @override
-  Widget build(BuildContext context) {
-    if (!expanded) return const SizedBox.shrink();
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        XoraSpacing.lg,
-        XoraSpacing.md,
-        XoraSpacing.lg,
-        XoraSpacing.xs,
-      ),
-      child: Text(
-        title.toUpperCase(),
-        style: XoraTypography.label.copyWith(
-          color: XoraColors.textSecondary,
-          fontSize: 11,
-        ),
       ),
     );
   }

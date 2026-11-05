@@ -11,7 +11,8 @@ class XoraNexo extends StatefulWidget {
   const XoraNexo({
     super.key,
     required this.child,
-    this.sidebarEntries = const [],
+    this.sidebarItems = const [],
+    this.sidebarSections = const [],
     this.appName,
     this.userName,
     this.userStatus,
@@ -27,7 +28,8 @@ class XoraNexo extends StatefulWidget {
   });
 
   final Widget child;
-  final List<NexoSidebarEntry> sidebarEntries;
+  final List<NexoSidebarItem> sidebarItems;
+  final List<NexoSidebarSection> sidebarSections;
   final String? appName;
   final String? userName;
   final String? userStatus;
@@ -47,7 +49,6 @@ class XoraNexo extends StatefulWidget {
 
 class _XoraNexoState extends State<XoraNexo> {
   NexoSidebarState _sidebarState = NexoSidebarState.expanded;
-  bool _rightOpen = true;
 
   void _toggleSidebar() {
     setState(() {
@@ -57,23 +58,28 @@ class _XoraNexoState extends State<XoraNexo> {
     });
   }
 
-  void _toggleRight() {
-    setState(() => _rightOpen = !_rightOpen);
-  }
-
   @override
   Widget build(BuildContext context) {
-    final hasBottom = widget.appVersion != null || (widget.bottomActions?.isNotEmpty ?? false);
+    final hasBottom =
+        widget.appVersion != null ||
+        (widget.bottomActions?.isNotEmpty ?? false);
     return Column(
       children: [
         Expanded(
           child: Row(
             children: [
               SizedBox(
-                width: _sidebarState == NexoSidebarState.collapsed ? 72 : widget.leftWidth,
+                width: _sidebarState == NexoSidebarState.collapsed
+                    ? 72
+                    : widget.leftWidth,
                 child: NexoSidebar(
                   appName: widget.appName,
-                  entries: widget.sidebarEntries,
+                  sections: widget.sidebarSections.isNotEmpty
+                      ? widget.sidebarSections
+                      : (widget.sidebarItems.isNotEmpty
+                          ? [NexoSidebarSection(items: widget.sidebarItems)]
+                          : const []),
+                  items: const [],
                   state: _sidebarState,
                   onStateChanged: (s) => setState(() => _sidebarState = s),
                   userName: widget.userName,
@@ -86,7 +92,9 @@ class _XoraNexoState extends State<XoraNexo> {
               Expanded(
                 child: NexoCanvas(
                   toolbar: NexoToolbar(
-                    height: _sidebarState == NexoSidebarState.collapsed ? 58 : 63,
+                    height: _sidebarState == NexoSidebarState.collapsed
+                        ? 58
+                        : 63,
                     leading: IconButton(
                       onPressed: _toggleSidebar,
                       icon: XoraIcon(
@@ -97,35 +105,13 @@ class _XoraNexoState extends State<XoraNexo> {
                       tooltip: 'Cambiar barra lateral',
                     ),
                     title: widget.toolbarTitle,
-                    actions: [
-                      IconButton(
-                        onPressed: _toggleRight,
-                        icon: XoraIcon(XoraIcons.panelRight),
-                        tooltip: 'Barra lateral derecha',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: XoraIcon(XoraIcons.magnifyingGlass),
-                        tooltip: 'Buscar',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: XoraIcon(XoraIcons.gear),
-                        tooltip: 'Configuración',
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: XoraIcon(XoraIcons.bell),
-                        tooltip: 'Notificaciones',
-                      ),
-                      ...widget.toolbarActions,
-                    ],
+                    actions: widget.toolbarActions,
                   ),
                   child: widget.child,
                 ),
               ),
-              if (_rightOpen && widget.rightPanel != null) const VerticalDivider(width: 1),
-              if (_rightOpen && widget.rightPanel != null)
+              if (widget.rightPanel != null) const VerticalDivider(width: 1),
+              if (widget.rightPanel != null)
                 SizedBox(width: widget.rightWidth, child: widget.rightPanel),
             ],
           ),
