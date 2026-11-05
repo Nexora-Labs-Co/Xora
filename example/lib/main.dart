@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:xora/xora.dart';
 
@@ -66,10 +65,10 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             selectedIndex: _index,
             onTap: (i) => setState(() => _index = i),
             items: const [
-              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.palette), label: 'Home'),
-              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.tableCells), label: 'Components'),
-              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.penToSquare), label: 'Forms'),
-              OneBottomBarItem(icon: FaIcon(FontAwesomeIcons.bell), label: 'Feedback'),
+              OneBottomBarItem(icon: XoraIcon(XoraIcons.palette), label: 'Home'),
+              OneBottomBarItem(icon: XoraIcon(XoraIcons.squaresFour), label: 'Components'),
+              OneBottomBarItem(icon: XoraIcon(XoraIcons.notePencil), label: 'Forms'),
+              OneBottomBarItem(icon: XoraIcon(XoraIcons.bell), label: 'Feedback'),
             ],
           ),
           child: pages[_index],
@@ -80,22 +79,22 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             items: [
               NexoSidebarItem(
                 label: 'Foundations',
-                icon: FontAwesomeIcons.palette,
+                icon: XoraIcons.palette,
                 onTap: () => setState(() => _index = 0),
               ),
               NexoSidebarItem(
                 label: 'Components',
-                icon: FontAwesomeIcons.tableCells,
+                icon: XoraIcons.squaresFour,
                 onTap: () => setState(() => _index = 1),
               ),
               NexoSidebarItem(
                 label: 'Forms',
-                icon: FontAwesomeIcons.penToSquare,
+                icon: XoraIcons.notePencil,
                 onTap: () => setState(() => _index = 2),
               ),
               NexoSidebarItem(
                 label: 'Feedback',
-                icon: FontAwesomeIcons.bell,
+                icon: XoraIcons.bell,
                 onTap: () => setState(() => _index = 3),
               ),
             ],
@@ -108,13 +107,13 @@ class _ShowcaseHomeState extends State<ShowcaseHome> {
             IconButton(
               iconSize: 20,
               onPressed: () => launchUrl(Uri.parse('https://github.com/Nexora-Labs-Co')),
-              icon: const FaIcon(FontAwesomeIcons.github),
+              icon: const XoraIcon(XoraIcons.github),
               tooltip: 'GitHub',
             ),
             IconButton(
               iconSize: 20,
               onPressed: () => launchUrl(Uri.parse('https://ko-fi.com/nexoralabsco')),
-              icon: const FaIcon(FontAwesomeIcons.mugHot),
+              icon: const XoraIcon(XoraIcons.mugHot),
               tooltip: 'Ko-fi',
             ),
           ],
@@ -265,7 +264,7 @@ class ComponentsPage extends StatelessWidget {
         const SizedBox(height: 8),
         XoraButton(
           label: "With icon",
-          icon: FaIcon(FontAwesomeIcons.plus, size: 16, color: Colors.white),
+          icon: XoraIcon(XoraIcons.plus, size: 16, color: Colors.white),
         ),
         const SizedBox(height: 24),
         Text('Badges', style: Theme.of(context).textTheme.titleLarge),
@@ -305,14 +304,14 @@ class ComponentsPage extends StatelessWidget {
                 leading: XoraAvatar(initials: 'JD'),
                 title: Text('Jane Doe'),
                 subtitle: Text('Product Designer'),
-                trailing: FaIcon(FontAwesomeIcons.chevronRight),
+                trailing: XoraIcon(XoraIcons.caretRight),
               ),
               XoraDivider(indent: 72),
               XoraListTile(
                 leading: XoraAvatar(initials: 'MK'),
                 title: Text('Mark Kent'),
                 subtitle: Text('Engineer'),
-                trailing: FaIcon(FontAwesomeIcons.chevronRight),
+                trailing: XoraIcon(XoraIcons.caretRight),
               ),
             ],
           ),
@@ -356,7 +355,7 @@ class _FormsPageState extends State<FormsPage> {
           hint: 'you@nexora.dev',
           keyboardType: TextInputType.emailAddress,
           errorText: _emailError,
-          prefixIcon: FaIcon(FontAwesomeIcons.envelope),
+          prefixIcon: XoraIcon(XoraIcons.envelopeSimple),
         ),
         const SizedBox(height: 16),
         XoraSwitch(
@@ -424,7 +423,7 @@ class FeedbackPage extends StatelessWidget {
         ),
         const SizedBox(height: 24),
         XoraEmptyState(
-          icon: FaIcon(FontAwesomeIcons.inbox),
+          icon: XoraIcon(XoraIcons.tray),
           title: 'No items yet',
           subtitle: 'Create your first item to get started.',
         ),
@@ -433,7 +432,7 @@ class FeedbackPage extends StatelessWidget {
         const SizedBox(height: 24),
         XoraCard(
           child: XoraEmptyState(
-            icon: FaIcon(FontAwesomeIcons.magnifyingGlassMinus),
+            icon: XoraIcon(XoraIcons.magnifyingGlassMinus),
             title: 'No results',
             subtitle: 'Try adjusting your search filters.',
             action: XoraButton(
